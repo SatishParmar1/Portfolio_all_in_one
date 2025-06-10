@@ -13,10 +13,11 @@ class Firebaseremoteconfig {
       ));
 
       await remoteConfig.fetchAndActivate();
-
+      final showtitle = remoteConfig.getBool('showtitle');
       final titlestring = remoteConfig.getString('Title');
 
-      if (titlestring.isEmpty) {
+
+      if (titlestring.isEmpty || !showtitle) {
         print("Version not found in remote config");
         return "";
       }
