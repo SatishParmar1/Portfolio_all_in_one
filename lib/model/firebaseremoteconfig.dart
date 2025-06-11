@@ -18,7 +18,7 @@ class Firebaseremoteconfig {
 
 
       if (titlestring.isEmpty || !showtitle) {
-        print("Version not found in remote config");
+        print("String not found");
         return "";
       }
 
@@ -29,4 +29,6 @@ class Firebaseremoteconfig {
       return "";
     }
   }
+
+
 }
