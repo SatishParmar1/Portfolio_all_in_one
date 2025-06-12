@@ -146,7 +146,7 @@ class Homepage extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                                child: Text("Flutter",style:TextStyle(fontSize: 30),),
+                                child: Text(Alltext.flutter,style:TextStyle(fontSize: 25),),
                               ),
                             ],
                           )
