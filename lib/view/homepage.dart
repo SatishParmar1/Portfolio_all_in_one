@@ -138,15 +138,15 @@ class Homepage extends StatelessWidget {
 
                               Container(
                                 height: 35,
-                                width: MediaQuery.of(context).size.width * 0.8,
+                                width: MediaQuery.of(context).size.width * 0.7,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(10)
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical:0),
-                                child: Text("Flutter",style:TextStyle(fontSize: 22,),),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                child: Text(Alltext.flutter,style:TextStyle(fontSize: 25),),
                               ),
                             ],
                           )

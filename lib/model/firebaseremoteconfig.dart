@@ -2,8 +2,8 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class Firebaseremoteconfig {
 
-
-  static Future<String?> _fetchLatestVersion() async {
+Map<int, String> skilldata = {};
+   Future<String?> _fetchLatestVersion() async {
     try {
       final remoteConfig = FirebaseRemoteConfig.instance;
 
@@ -18,7 +18,7 @@ class Firebaseremoteconfig {
 
 
       if (titlestring.isEmpty || !showtitle) {
-        print("String not found");
+        print("Version not found in remote config");
         return "";
       }
 
