@@ -164,8 +164,8 @@
         </p>
         <ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
             <li><strong class="text-blue-600">Email:</strong> satishparmarparmar486@gmail.com</li>
-            <li><strong class="text-blue-600">LinkedIn:</strong> <a href="https://www.linkedin.com/in/satish-parmar-ak978312/" class="text-blue-500 hover:underline" target="_blank">Your LinkedIn Profile</a></li>
-            <li><strong class="text-blue-600">GitHub:</strong> <a href="https://github.com/SatishParmar1" class="text-blue-500 hover:underline" target="_blank">Your GitHub Profile</a></li>
+            <li><strong class="text-blue-600">LinkedIn:</strong> <a href="https://www.linkedin.com/in/satish-parmar-ak978312/" class="text-blue-500 hover:underline" target="_blank">Developer LinkedIn Profile</a></li>
+            <li><strong class="text-blue-600">GitHub:</strong> <a href="https://github.com/SatishParmar1" class="text-blue-500 hover:underline" target="_blank">Developer GitHub Profile</a></li>
         </ul>
     </div>
     <hr class="section-separator">
