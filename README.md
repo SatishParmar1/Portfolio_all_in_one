@@ -181,16 +181,4 @@
     </div>
     <hr class="section-separator">
 
-  
-  <div class="mb-6">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-pink-500">🙏</span> Acknowledgements
-        </h2>
-        <ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
-            <li>Flutter Team for their amazing framework.</li>
-            <li>Any specific packages/libraries used that you want to highlight.</li>
-            <li>Inspiration from other portfolio projects.</li>
-        </ul>
-    </div>
-
 </div>
