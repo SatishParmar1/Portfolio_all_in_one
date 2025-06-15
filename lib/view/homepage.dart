@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:protfoliowebsite/Controllers/skill_controller.dart';
 import 'package:protfoliowebsite/textdata/alllink.dart';
 import 'package:protfoliowebsite/textdata/alltext.dart';
+import 'package:provider/provider.dart';
+
+import '../Uitilities/gridviewskills.dart';
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
@@ -123,32 +127,36 @@ class Homepage extends StatelessWidget {
                           SizedBox(height: 10,),
                           Text(Alltext.aboutmedata,style: TextStyle(fontSize: 20,color: Colors.grey.shade700),textAlign: TextAlign.justify,),
                           SizedBox(height: 30,),
-                          Text(Alltext.aboutme,style: TextStyle(fontWeight: FontWeight.bold,fontSize: aboutme,color: Colors.grey.shade600),),
+                          Text(Alltext.skill,style: TextStyle(fontWeight: FontWeight.bold,fontSize: aboutme,color: Colors.grey.shade600),),
                           Divider(),
                           SizedBox(height: 10,),
-                          Stack(
-                            children: [
-                              Container(
-                                height: 35,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey, width: 2),
-                                  borderRadius: BorderRadius.circular(10)
+                          Consumer<Skill_controller>(
+                            builder: (context,provider,child) {
+                              return Container(
+                                height: 200,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: GridView.builder(
+                                    itemCount: provider.skills.length,
+                                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                                      maxCrossAxisExtent: 90,
+                                      mainAxisExtent: 90,
+                                      crossAxisSpacing: 15,
+                                      mainAxisSpacing: 15,
+                                      childAspectRatio: 1, // Aspect Ratio Control
+                                    ),
+                                    itemBuilder: (context, index) {
+                                      final skill = provider.skills[index];
+                                      return SkillCard(
+                                        icon: skill['icon'],
+                                        title: skill['name'],
+                                        color: skill['color'],
+                                      );
+                                    },
+                                  ),
                                 ),
-                              ),
-
-                              Container(
-                                height: 35,
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(Alltext.flutter,style:TextStyle(fontSize: 25),),
-                              ),
-                            ],
+                              );
+                            }
                           )
 
                         ],
