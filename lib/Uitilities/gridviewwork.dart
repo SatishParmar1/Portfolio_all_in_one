@@ -23,18 +23,9 @@ class Workcard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-       /* boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 6,
-            offset: const Offset(2, 4),
-          ),
-        ],*/
       ),
       child: LayoutBuilder(
           builder: (context, constraints) {
-            double imageSize = constraints.maxWidth; // Use full width
-            double imageHeight = constraints.maxHeight * 0.7; // 70% of container height
             return InkWell(
               onTap: (){
                 if(link.toString() != "") {
@@ -44,23 +35,24 @@ class Workcard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 10),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      image,
-                      height: imageHeight,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
+                  Expanded(
+                    flex: 7,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        image,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   SizedBox(height: 10),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     decoration: BoxDecoration(
                       color: Colors.white24,
-                        borderRadius:BorderRadius.circular(20) ),
-
+                      borderRadius: BorderRadius.circular(20)
+                    ),
                     child: Text(
                       title,
                       style: const TextStyle(
@@ -69,24 +61,24 @@ class Workcard extends StatelessWidget {
                         color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
-
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  SizedBox(height: 5,),
-                  Text(
-                          description,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                          ),
-                          textAlign: TextAlign.justify,
-                          maxLines: maxline,
-                          textScaler: TextScaler.noScaling,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-
+                  SizedBox(height: 5),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      description,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white54,
+                      ),
+                      textAlign: TextAlign.justify,
+                      maxLines: maxline,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               )
             );
@@ -95,3 +87,4 @@ class Workcard extends StatelessWidget {
     );
   }
 }
+

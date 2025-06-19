@@ -132,7 +132,7 @@ class Homepage extends StatelessWidget {
                           Text(Alltext.aboutme,style: TextStyle(fontWeight: FontWeight.bold,fontSize: aboutme,color: Colors.grey.shade600),),
                           Divider(),
                           SizedBox(height: 10,),
-                          Text(Alltext.aboutmedata,style: TextStyle(fontSize: 20,color: Colors.grey.shade700),textAlign: TextAlign.justify,),
+                          Text(Alltext.aboutmedata,style: TextStyle(fontSize: 20,color: Colors.white54),textAlign: TextAlign.justify,),
                           SizedBox(height: 30,),
                           Text(Alltext.skill,style: TextStyle(fontWeight: FontWeight.bold,fontSize: aboutme,color: Colors.grey.shade600),),
                           Divider(),
@@ -173,10 +173,10 @@ class Homepage extends StatelessWidget {
                                   physics: NeverScrollableScrollPhysics(),
                                   itemCount: provider.work.length,
                                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: 400,
+                                    maxCrossAxisExtent: 440,
                                     crossAxisSpacing: 20,
                                     mainAxisSpacing: 20,
-                                    childAspectRatio: 0.8, // Slightly adjusted for description
+                                    childAspectRatio: width < 600 ? 0.7 : 0.85, // Responsive aspect ratio
                                   ),
                                   itemBuilder: (context, index) {
                                     final skill = provider.work[index];
