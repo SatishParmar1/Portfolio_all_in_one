@@ -5,31 +5,36 @@ class Workcard extends StatelessWidget {
   final String image;
   final String title;
   final Uri link;
+  final String description;
+  final int maxline;
 
   const Workcard({
     super.key,
     required this.image,
     required this.title,
     required this.link,
+    required this.description,
+    required this.maxline,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      /*decoration: BoxDecoration(
-        color: Colors.grey,
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
+       /* boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             blurRadius: 6,
             offset: const Offset(2, 4),
           ),
-        ],
-      ),*/
+        ],*/
+      ),
       child: LayoutBuilder(
           builder: (context, constraints) {
-            double imageSize = constraints.maxWidth * 0.9; // 50% of container height
+            double imageSize = constraints.maxWidth; // Use full width
+            double imageHeight = constraints.maxHeight * 0.7; // 70% of container height
             return InkWell(
               onTap: (){
                 if(link.toString() != "") {
@@ -37,38 +42,53 @@ class Workcard extends StatelessWidget {
                 }
               },
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(32),
-                      child: Image.asset(
-                        image,
-                        height: imageSize,
-                        width: imageSize,
-                        fit: BoxFit.cover,
-                      ),
+                  SizedBox(height: 10),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      image,
+                      height: imageHeight,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
-
+                  ),
+                  SizedBox(height: 10),
                   Container(
-                    width: imageSize-80,
+                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 2),
                     decoration: BoxDecoration(
-                     /* color: Colors.white24,*/
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10))
-                    ),
+                      color: Colors.white24,
+                        borderRadius:BorderRadius.circular(20) ),
+
                     child: Text(
                       title,
                       style: const TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
+
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
+                  SizedBox(height: 5,),
+                  Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.justify,
+                          maxLines: maxline,
+                          textScaler: TextScaler.noScaling,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+
                 ],
               )
-
             );
           }
       ),

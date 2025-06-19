@@ -20,6 +20,7 @@ class Homepage extends StatelessWidget {
     double imageHeight;
     double semmenticpadding;
     double aboutme;
+    int maxline;
 
     if (width < 600) {
       // Mobile
@@ -28,6 +29,7 @@ class Homepage extends StatelessWidget {
       imageHeight = width * 0.9;
       semmenticpadding = width*0.05;
       aboutme = width*0.06;
+      maxline = 2;
     } else if (width < 1200) {
       // Tablet
       fontTitleSize = width * 0.05;
@@ -35,6 +37,7 @@ class Homepage extends StatelessWidget {
       imageHeight = width * 0.5;
       semmenticpadding = width*0.05;1;
       aboutme = width*0.04;
+      maxline = 2;
     } else {
       // Desktop
       fontTitleSize =70;
@@ -42,6 +45,7 @@ class Homepage extends StatelessWidget {
       imageHeight = 900;
       semmenticpadding = width*0.05;
       aboutme = width*0.02;
+      maxline = 2;
     }
 
     return Scaffold(
@@ -165,22 +169,23 @@ class Homepage extends StatelessWidget {
                           Consumer<MyworkController>(
                               builder: (context,provider,child) {
                                 return GridView.builder(
-                                  shrinkWrap: true, // Allow grid to size to content
-                                  physics: NeverScrollableScrollPhysics(), // Disable scrolling
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
                                   itemCount: provider.work.length,
                                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: 380,
-                                    mainAxisExtent: 380,
-                                    crossAxisSpacing: 15,
-                                    mainAxisSpacing: 15,
-                                    childAspectRatio: 1,
+                                    maxCrossAxisExtent: 400,
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 20,
+                                    childAspectRatio: 0.8, // Slightly adjusted for description
                                   ),
                                   itemBuilder: (context, index) {
                                     final skill = provider.work[index];
                                     return Workcard(
                                       image: skill['image'],
                                       title: skill['name'],
+                                      description: skill['description'],
                                       link: Uri.parse(skill['link']),
+                                      maxline: maxline,
                                     );
                                   },
                                 );
@@ -203,5 +208,6 @@ class Homepage extends StatelessWidget {
       ),
     );
   }
+
 
 }
