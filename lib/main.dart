@@ -1,28 +1,24 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:protfoliowebsite/view/homepage.dart';
+import 'package:flutter/services.dart';
+import 'package:portfolio/view/homepage.dart';
+
 import 'package:provider/provider.dart';
+import 'Controllers/mywork_controller.dart';
 import 'Controllers/skill_controller.dart';
 import 'firebase_options.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-/*  if (kIsWeb) {
-    // Web needs options
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  } else {
-    // Mobile does not need options if configured via google-services.json or GoogleService-Info.plist
-    await Firebase.initializeApp();
-  }*/
   runApp(const MyApp());
 }
 
@@ -33,10 +29,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => Skill_controller())
-          
+          ChangeNotifierProvider(create: (_) => Skill_controller()),
+          ChangeNotifierProvider(create: (_) => MyworkController())
+
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
         title: 'Portfolio',
         theme: ThemeData(
             useMaterial3: true,

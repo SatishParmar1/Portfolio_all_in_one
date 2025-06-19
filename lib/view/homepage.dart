@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:protfoliowebsite/Controllers/skill_controller.dart';
-import 'package:protfoliowebsite/textdata/alllink.dart';
-import 'package:protfoliowebsite/textdata/alltext.dart';
+import 'package:portfolio/Controllers/mywork_controller.dart';
+import 'package:portfolio/Uitilities/gridviewwork.dart';
 import 'package:provider/provider.dart';
 
+import '../Controllers/skill_controller.dart';
 import '../Uitilities/gridviewskills.dart';
+import '../textdata/alllink.dart';
+import '../textdata/alltext.dart';
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
@@ -112,6 +114,7 @@ class Homepage extends StatelessWidget {
                             Alllink.satishimage,
                             height: imageHeight,
                           ),
+
                         ],
                       ),
                     ),
@@ -132,31 +135,56 @@ class Homepage extends StatelessWidget {
                           SizedBox(height: 10,),
                           Consumer<Skill_controller>(
                             builder: (context,provider,child) {
-                              return Container(
-                                height: 200,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: GridView.builder(
-                                    itemCount: provider.skills.length,
-                                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                      maxCrossAxisExtent: 90,
-                                      mainAxisExtent: 90,
-                                      crossAxisSpacing: 15,
-                                      mainAxisSpacing: 15,
-                                      childAspectRatio: 1, // Aspect Ratio Control
-                                    ),
-                                    itemBuilder: (context, index) {
-                                      final skill = provider.skills[index];
-                                      return SkillCard(
-                                        icon: skill['icon'],
-                                        title: skill['name'],
-                                        color: skill['color'],
-                                      );
-                                    },
-                                  ),
+                              return GridView.builder(
+                                shrinkWrap: true, // Allow grid to size to content
+                                physics: NeverScrollableScrollPhysics(), // Disable scrolling
+                                itemCount: provider.skills.length,
+                                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 120,
+                                  mainAxisExtent: 125,
+                                  crossAxisSpacing: 15,
+                                  mainAxisSpacing: 15,
+                                  childAspectRatio: 1,
                                 ),
+                                itemBuilder: (context, index) {
+                                  final skill = provider.skills[index];
+                                  return SkillCard(
+                                    image: skill['image'],
+                                    title: skill['name'],
+                                    color: skill['color'],
+                                  );
+                                },
                               );
                             }
+                          ),
+                          SizedBox(height: 30,),
+                          Text(Alltext.myword,style: TextStyle(fontWeight: FontWeight.bold,fontSize: aboutme,color: Colors.grey.shade600),),
+                          Divider(),
+                          SizedBox(height: 10,),
+
+                          Consumer<MyworkController>(
+                              builder: (context,provider,child) {
+                                return GridView.builder(
+                                  shrinkWrap: true, // Allow grid to size to content
+                                  physics: NeverScrollableScrollPhysics(), // Disable scrolling
+                                  itemCount: provider.work.length,
+                                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: 380,
+                                    mainAxisExtent: 380,
+                                    crossAxisSpacing: 15,
+                                    mainAxisSpacing: 15,
+                                    childAspectRatio: 1,
+                                  ),
+                                  itemBuilder: (context, index) {
+                                    final skill = provider.work[index];
+                                    return Workcard(
+                                      image: skill['image'],
+                                      title: skill['name'],
+                                      link: Uri.parse(skill['link']),
+                                    );
+                                  },
+                                );
+                              }
                           )
 
                         ],
