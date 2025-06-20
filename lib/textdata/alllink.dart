@@ -23,5 +23,6 @@ class Alllink{
   static String workinprogress = "assets/images/working1.jpg";
   static String skyview = "assets/images/SKY.jpg";
   static String shreesai = "assets/images/shreesai.jpg";
+  static String logo = "assets/images/hello2.gif";
 
 }

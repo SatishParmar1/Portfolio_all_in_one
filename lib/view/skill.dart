@@ -45,43 +45,57 @@ class Skillpage extends StatelessWidget {
       aboutme = width*0.02;
       maxline = 2;
     }
-    return SafeArea(
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Container(
-          color: Colors.black,
-          child: Column(
-            children: [
-              Text(Alltext.skill,style: TextStyle(fontWeight: FontWeight.bold,fontSize: aboutme,color: Colors.grey.shade600),),
-              Divider(),
-              SizedBox(height: 10,),
-              Consumer<Skill_controller>(
-                  builder: (context,provider,child) {
-                    return GridView.builder(
-                      shrinkWrap: true, // Allow grid to size to content
-                      physics: NeverScrollableScrollPhysics(), // Disable scrolling
-                      itemCount: provider.skills.length,
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 120,
-                        mainAxisExtent: 125,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 15,
-                        childAspectRatio: 1,
-                      ),
-                      itemBuilder: (context, index) {
-                        final skill = provider.skills[index];
-                        return SkillCard(
-                          image: skill['image'],
-                          title: skill['name'],
-                          color: skill['color'],
-                          description: skill['description'],
-                        );
-                      },
-                    );
-                  }
-              ),
-              SizedBox(height: 30,),
-            ],
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            color: Colors.black,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(onPressed: (){
+                      Navigator.of(context).pop();
+                    }, icon:Icon(Icons.arrow_back_ios_new_outlined)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(Alltext.skill,style: TextStyle(fontWeight: FontWeight.bold,fontSize: aboutme,color: Colors.grey.shade600),),
+                      ],
+                    ),
+                  ],
+                ),
+                Divider(),
+                SizedBox(height: 10,),
+                Consumer<Skill_controller>(
+                    builder: (context,provider,child) {
+                      return GridView.builder(
+                        shrinkWrap: true, // Allow grid to size to content
+                        physics: NeverScrollableScrollPhysics(), // Disable scrolling
+                        itemCount: provider.skills.length,
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 120,
+                          mainAxisExtent: 125,
+                          crossAxisSpacing: 15,
+                          mainAxisSpacing: 15,
+                          childAspectRatio: 1,
+                        ),
+                        itemBuilder: (context, index) {
+                          final skill = provider.skills[index];
+                          return SkillCard(
+                            image: skill['image'],
+                            title: skill['name'],
+                            color: skill['color'],
+                            description: skill['description'],
+                          );
+                        },
+                      );
+                    }
+                ),
+                SizedBox(height: 30,),
+              ],
+            ),
           ),
         ),
       ),
