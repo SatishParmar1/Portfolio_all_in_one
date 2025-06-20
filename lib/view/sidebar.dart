@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../textdata/alllink.dart';
 import '../Uitilities/animated_button.dart';
 
-class Sidebar extends StatefulWidget {
+class Sidebar extends StatelessWidget {
+
   const Sidebar({super.key});
-
-  @override
-  State<Sidebar> createState() => _SidebarState();
-}
-
-class _SidebarState extends State<Sidebar> {
-  int selectedIndex = 0;
-
-  void _onSelect(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,34 +38,37 @@ class _SidebarState extends State<Sidebar> {
                   _SidebarButton(
                     icon: Icons.home,
                     label: 'Home',
-                    onTap: () {
-                      Navigator.of(context).popUntil((route) => route.isFirst);
-                    },
+                    onTap: () {},
                   ),
                   _SidebarButton(
                     icon: Icons.person,
                     label: 'About Me',
-                    onTap: () {},
+                    onTap: () {
+
+                    },
                   ),
                   _SidebarButton(
                     icon: Icons.star,
                     label: 'Skills',
-                    onTap: () {},
+                    onTap: () {
+                      context.go("/skills");
+                    },
                   ),
                   _SidebarButton(
                     icon: Icons.work,
                     label: 'Projects',
-                    onTap: () {},
+
+  onTap: () {},
                   ),
                   _SidebarButton(
                     icon: Icons.description,
                     label: 'Resume',
-                    onTap: () {},
+  onTap: () {},
                   ),
                   _SidebarButton(
                     icon: Icons.mail,
                     label: 'Contact',
-                    onTap: () {},
+  onTap: () {},
                   ),
                   const Spacer(),
                   // Social Icons
@@ -116,16 +108,19 @@ class _SidebarButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-  const _SidebarButton({
+  bool selected;
+   _SidebarButton({
     required this.icon,
     required this.label,
     required this.onTap,
+    this.selected = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final isNarrow = width < 700;
+    final Color color = selected ? Colors.black : Colors.white;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
       child: AnimatedButton(
@@ -138,23 +133,23 @@ class _SidebarButton extends StatelessWidget {
             ? Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(icon, color: Colors.white, size: 22),
+                  Icon(icon, color: color, size: 22),
                   const SizedBox(height: 6),
                   Text(
                     label,
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                    style: TextStyle(color: color, fontSize: 14, fontWeight: selected ? FontWeight.bold : FontWeight.normal),
                     textAlign: TextAlign.center,
                   ),
                 ],
               )
             : Row(
                 children: [
-                  Icon(icon, color: Colors.white, size: 20),
+                  Icon(icon, color: color, size: 20),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Text(
                       label,
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: color, fontSize: 16, fontWeight: selected ? FontWeight.bold : FontWeight.normal),
                     ),
                   ),
                 ],

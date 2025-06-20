@@ -1,9 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:portfolio/view/homepage.dart';
-
+import 'package:go_router/go_router.dart';
+import 'package:portfolio/model/app_routes.dart';
 import 'package:provider/provider.dart';
 import 'Controllers/mywork_controller.dart';
 import 'Controllers/skill_controller.dart';
@@ -21,6 +20,10 @@ void main()async{
   );
   runApp(const MyApp());
 }
+  final GoRouter _router = GoRouter(
+    routes: appRoutes
+  );
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,11 +34,11 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => Skill_controller()),
           ChangeNotifierProvider(create: (_) => MyworkController())
-
         ],
-        child: MaterialApp(
+        child: MaterialApp.router(
+          routerConfig: _router,
           debugShowCheckedModeBanner: false,
-        title: 'Portfolio',
+        title: 'Who is Satish?',
         theme: ThemeData(
             useMaterial3: true,
             fontFamily: 'Outfit',
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
 
         )
         ),
-        home: Homepage(),
+
             ),
       );
   }
