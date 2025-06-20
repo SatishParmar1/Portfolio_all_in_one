@@ -156,6 +156,7 @@ class Homepage extends StatelessWidget {
                                     image: skill['image'],
                                     title: skill['name'],
                                     color: skill['color'],
+                                    description: skill['description'],
                                   );
                                 },
                               );
@@ -173,10 +174,10 @@ class Homepage extends StatelessWidget {
                                   physics: NeverScrollableScrollPhysics(),
                                   itemCount: provider.work.length,
                                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: 440,
+                                    maxCrossAxisExtent: 380,
                                     crossAxisSpacing: 20,
                                     mainAxisSpacing: 20,
-                                    childAspectRatio: width < 600 ? 0.7 : 0.85, // Responsive aspect ratio
+                                    childAspectRatio: width < 600 ? 1 : 0.85,
                                   ),
                                   itemBuilder: (context, index) {
                                     final skill = provider.work[index];
