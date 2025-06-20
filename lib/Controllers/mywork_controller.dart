@@ -42,5 +42,11 @@ class MyworkController with ChangeNotifier{
     },
   ];
 
+  bool showdiscription = false;
+  void showdiscriptiondata(){
+    showdiscription = !showdiscription;
+    notifyListeners();
+  }
+
 
 }

@@ -32,6 +32,8 @@ class Workcard extends StatelessWidget {
                   Urllancher().launchInBrowser(link);
                 }
               },
+                onLongPress: (){
+                },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
