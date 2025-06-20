@@ -27,27 +27,9 @@ class Sidebar extends StatelessWidget {
                   // Profile Image
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage(Alllink.satishimage),
+                    backgroundImage: AssetImage(Alllink.logo),
                   ),
                   const SizedBox(height: 20),
-                  // Name
-                  Text(
-                    'Satish Kumar',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  // Tagline
-                  Text(
-                    'IoT & Flutter Developer',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey[400],
-                    ),
-                  ),
                   const SizedBox(height: 30),
                   // Navigation Links
                   _SidebarButton(
@@ -116,7 +98,7 @@ class Sidebar extends StatelessWidget {
   }
 }
 
-class _SidebarButton extends StatelessWidget {
+class _SidebarButton extends StatefulWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
@@ -127,31 +109,97 @@ class _SidebarButton extends StatelessWidget {
   });
 
   @override
+  State<_SidebarButton> createState() => _SidebarButtonState();
+}
+
+class _SidebarButtonState extends State<_SidebarButton> {
+  bool _isHovering = false;
+
+  @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final isNarrow = width < 700;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 24),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-          decoration: BoxDecoration(
-            color: Colors.grey[850],
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child:  Row(
-                  children: [
-                    Icon(icon, color: Colors.white, size: 20),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Text(
-                        label,
-                        style: const TextStyle(color: Colors.white, fontSize: 16),
+      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _isHovering = true),
+        onExit: (_) => setState(() => _isHovering = false),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(8),
+          onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.easeInOut,
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            decoration: BoxDecoration(
+              color: _isHovering ? Colors.black54 : Colors.grey[850],
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: _isHovering
+                  ? [
+                      BoxShadow(
+                        color: Colors.blueGrey.withOpacity(0.3),
+                        blurRadius: 12,
+                        offset: Offset(0, 4),
                       ),
-                    ),
-                  ],
-                ),
+                    ]
+                  : [],
+            ),
+            child: isNarrow
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.easeInOut,
+                        child: Icon(
+                          widget.icon,
+                          color: _isHovering ? Colors.white : Colors.white,
+                          size: _isHovering ? 26 : 22,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      AnimatedDefaultTextStyle(
+                        duration: const Duration(milliseconds: 200),
+                        style: TextStyle(
+                          color: _isHovering ? Colors.black  : Colors.white,
+                          fontSize: 14,
+                          fontWeight:
+                              _isHovering ? FontWeight.bold : FontWeight.normal,
+                        ),
+                        child: Text(
+                          widget.label,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.easeInOut,
+                        child: Icon(
+                          widget.icon,
+                          color: _isHovering ? Colors.white  : Colors.white,
+                          size: _isHovering ? 24 : 20,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: AnimatedDefaultTextStyle(
+                          duration: const Duration(milliseconds: 200),
+                          style: TextStyle(
+                            color: _isHovering ? Colors.white  : Colors.white,
+                            fontSize: 16,
+                            fontWeight:
+                                _isHovering ? FontWeight.bold : FontWeight.normal,
+                          ),
+                          child: Text(widget.label),
+                        ),
+                      ),
+                    ],
+                  ),
+          ),
         ),
       ),
     );
