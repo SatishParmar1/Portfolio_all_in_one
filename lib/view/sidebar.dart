@@ -52,7 +52,7 @@ class Sidebar extends StatelessWidget {
                     icon: Icons.star,
                     label: 'Skills',
                     onTap: () {
-                      context.go("/skills");
+
                     },
                   ),
                   _SidebarButton(

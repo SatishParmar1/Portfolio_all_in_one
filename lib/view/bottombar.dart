@@ -17,12 +17,16 @@ class Bottombar extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.star),
-              label: 'Skills',
+              label: 'Contact',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.star),
+              label: 'Contact',
             ),
           ],
           onTap: (index) {
             if (index == 1) {
-              context.go("/skills");
+
             }
           },
         ),
