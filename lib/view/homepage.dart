@@ -163,186 +163,367 @@ class _HomepageState extends State<Homepage> {
               ),
             Expanded(
               flex: 7,
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    controller: Homepage.scrollController,
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
+              child: width < 600
+                  ? Column(
                       children: [
-                        // Home Section
-                        Container(
-                          key: Homepage.homeKey,
-                          child: Center(
-                            child: Column(
-                              children: [
-                                SizedBox(height: 50),
-                                ShaderMask(
-                                  shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.grey, Colors.white],
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                  ).createShader(Rect.fromLTWH(
-                                      0, 0, bounds.width, bounds.height)),
-                                  blendMode: BlendMode.srcIn,
-                                  child: Text(
-                                    Alltext.satish,
-                                    style: TextStyle(
-                                      fontSize: fontTitleSize,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  Alltext.iotandflutter,
-                                  style: TextStyle(
-                                      fontSize: fontSubtitleSize,
-                                      color: Colors.grey),
-                                ),
-                                SizedBox(height: 10),
-                                Image.asset(
-                                  Alllink.satishimage,
-                                  height: imageHeight,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        // About Section
-                        Padding(
-                          key: Homepage.aboutKey,
-                          padding:
-                              EdgeInsets.symmetric(horizontal: semmenticpadding),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
+                        Expanded(
+                          child: Stack(
                             children: [
-                              Text(
-                                Alltext.aboutme,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: aboutme,
-                                    color: Colors.grey.shade600),
-                              ),
-                              Divider(),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                Alltext.aboutmedata,
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white54),
-                                textAlign: TextAlign.justify,
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              // Skills Section
-                              Text(
-                                Alltext.skill,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: aboutme,
-                                    color: Colors.grey.shade600),
-                              ),
-                              Divider(),
-                              SizedBox(
-                                key: Homepage.skillsKey,
-                                height: 10,
-                              ),
-                              Consumer<Skill_controller>(
-                                  builder: (context, provider, child) {
-                                return GridView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  itemCount: provider.skills.length,
-                                  gridDelegate:
-                                      SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: 120,
-                                    mainAxisExtent: 125,
-                                    crossAxisSpacing: 15,
-                                    mainAxisSpacing: 15,
-                                    childAspectRatio: 1,
-                                  ),
-                                  itemBuilder: (context, index) {
-                                    final skill = provider.skills[index];
-                                    return SkillCard(
-                                      image: skill['image'],
-                                      title: skill['name'],
-                                      color: skill['color'],
-                                      description: skill['description'],
-                                    );
-                                  },
-                                );
-                              }),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              // Projects Section
-                              Text(
-                                Alltext.myword,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: aboutme,
-                                    color: Colors.grey.shade600),
-                              ),
-                              Divider(),
-                              SizedBox(
-                                key: Homepage.projectsKey,
-                                height: 10,
-                              ),
-                              Consumer<MyworkController>(
-                                  builder: (context, provider, child) {
-                                return GridView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  itemCount: provider.work.length,
-                                  gridDelegate:
-                                      SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: 380,
-                                    crossAxisSpacing: 20,
-                                    mainAxisSpacing: 20,
-                                    childAspectRatio:
-                                        width < 600 ? 1 : 0.85,
-                                  ),
-                                  itemBuilder: (context, index) {
-                                    final skill = provider.work[index];
-                                    return Workcard(
-                                      image: skill['image'],
-                                      title: skill['name'],
-                                      description: skill['description'],
-                                      link: Uri.parse(skill['link']),
-                                      maxline: maxline,
-                                    );
-                                  },
-                                );
-                              }),
-                              // Contact Section anchor
-                              SizedBox(
-                                key: Homepage.contactKey,
-                                height: 1,
+                              SingleChildScrollView(
+                                controller: Homepage.scrollController,
+                                physics: BouncingScrollPhysics(),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    // Home Section
+                                    Container(
+                                      key: Homepage.homeKey,
+                                      child: Center(
+                                        child: Column(
+                                          children: [
+                                            SizedBox(height: 50),
+                                            ShaderMask(
+                                              shaderCallback: (bounds) => LinearGradient(
+                                                colors: [Colors.grey, Colors.white],
+                                                begin: Alignment.centerLeft,
+                                                end: Alignment.centerRight,
+                                              ).createShader(Rect.fromLTWH(
+                                                  0, 0, bounds.width, bounds.height)),
+                                              blendMode: BlendMode.srcIn,
+                                              child: Text(
+                                                Alltext.satish,
+                                                style: TextStyle(
+                                                  fontSize: fontTitleSize,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              Alltext.iotandflutter,
+                                              style: TextStyle(
+                                                  fontSize: fontSubtitleSize,
+                                                  color: Colors.grey),
+                                            ),
+                                            SizedBox(height: 10),
+                                            Image.asset(
+                                              Alllink.satishimage,
+                                              height: imageHeight,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 40,
+                                    ),
+                                    // About Section
+                                    Padding(
+                                      key: Homepage.aboutKey,
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: semmenticpadding),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            Alltext.aboutme,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: aboutme,
+                                                color: Colors.grey.shade600),
+                                          ),
+                                          Divider(),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            Alltext.aboutmedata,
+                                            style: TextStyle(
+                                                fontSize: 20, color: Colors.white54),
+                                            textAlign: TextAlign.justify,
+                                          ),
+                                          SizedBox(
+                                            height: 30,
+                                          ),
+                                          // Skills Section
+                                          Text(
+                                            Alltext.skill,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: aboutme,
+                                                color: Colors.grey.shade600),
+                                          ),
+                                          Divider(),
+                                          SizedBox(
+                                            key: Homepage.skillsKey,
+                                            height: 10,
+                                          ),
+                                          Consumer<Skill_controller>(
+                                              builder: (context, provider, child) {
+                                            return GridView.builder(
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              itemCount: provider.skills.length,
+                                              gridDelegate:
+                                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                                maxCrossAxisExtent: 120,
+                                                mainAxisExtent: 125,
+                                                crossAxisSpacing: 15,
+                                                mainAxisSpacing: 15,
+                                                childAspectRatio: 1,
+                                              ),
+                                              itemBuilder: (context, index) {
+                                                final skill = provider.skills[index];
+                                                return SkillCard(
+                                                  image: skill['image'],
+                                                  title: skill['name'],
+                                                  color: skill['color'],
+                                                  description: skill['description'],
+                                                );
+                                              },
+                                            );
+                                          }),
+                                          SizedBox(
+                                            height: 30,
+                                          ),
+                                          // Projects Section
+                                          Text(
+                                            Alltext.myword,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: aboutme,
+                                                color: Colors.grey.shade600),
+                                          ),
+                                          Divider(),
+                                          SizedBox(
+                                            key: Homepage.projectsKey,
+                                            height: 10,
+                                          ),
+                                          Consumer<MyworkController>(
+                                              builder: (context, provider, child) {
+                                            return GridView.builder(
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              itemCount: provider.work.length,
+                                              gridDelegate:
+                                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                                maxCrossAxisExtent: 380,
+                                                crossAxisSpacing: 20,
+                                                mainAxisSpacing: 20,
+                                                childAspectRatio:
+                                                    width < 600 ? 1 : 0.85,
+                                              ),
+                                              itemBuilder: (context, index) {
+                                                final skill = provider.work[index];
+                                                return Workcard(
+                                                  image: skill['image'],
+                                                  title: skill['name'],
+                                                  description: skill['description'],
+                                                  link: Uri.parse(skill['link']),
+                                                  maxline: maxline,
+                                                );
+                                              },
+                                            );
+                                          }),
+                                          // Contact Section anchor
+                                          SizedBox(
+                                            key: Homepage.contactKey,
+                                            height: 1,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 50,
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: 50,
-                        )
+                        Bottombar(
+                          currentSection: _currentSection,
+                          onSectionSelected: _onSectionSelected,
+                        ),
+                      ],
+                    )
+                  : Stack(
+                      children: [
+                        SingleChildScrollView(
+                          controller: Homepage.scrollController,
+                          physics: BouncingScrollPhysics(),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              // Home Section
+                              Container(
+                                key: Homepage.homeKey,
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 50),
+                                      ShaderMask(
+                                        shaderCallback: (bounds) => LinearGradient(
+                                          colors: [Colors.grey, Colors.white],
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
+                                        ).createShader(Rect.fromLTWH(
+                                            0, 0, bounds.width, bounds.height)),
+                                        blendMode: BlendMode.srcIn,
+                                        child: Text(
+                                          Alltext.satish,
+                                          style: TextStyle(
+                                            fontSize: fontTitleSize,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        Alltext.iotandflutter,
+                                        style: TextStyle(
+                                            fontSize: fontSubtitleSize,
+                                            color: Colors.grey),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Image.asset(
+                                        Alllink.satishimage,
+                                        height: imageHeight,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 40,
+                              ),
+                              // About Section
+                              Padding(
+                                key: Homepage.aboutKey,
+                                padding:
+                                    EdgeInsets.symmetric(horizontal: semmenticpadding),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      Alltext.aboutme,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: aboutme,
+                                          color: Colors.grey.shade600),
+                                    ),
+                                    Divider(),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      Alltext.aboutmedata,
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.white54),
+                                      textAlign: TextAlign.justify,
+                                    ),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    // Skills Section
+                                    Text(
+                                      Alltext.skill,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: aboutme,
+                                          color: Colors.grey.shade600),
+                                    ),
+                                    Divider(),
+                                    SizedBox(
+                                      key: Homepage.skillsKey,
+                                      height: 10,
+                                    ),
+                                    Consumer<Skill_controller>(
+                                        builder: (context, provider, child) {
+                                      return GridView.builder(
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: provider.skills.length,
+                                        gridDelegate:
+                                            SliverGridDelegateWithMaxCrossAxisExtent(
+                                          maxCrossAxisExtent: 120,
+                                          mainAxisExtent: 125,
+                                          crossAxisSpacing: 15,
+                                          mainAxisSpacing: 15,
+                                          childAspectRatio: 1,
+                                        ),
+                                        itemBuilder: (context, index) {
+                                          final skill = provider.skills[index];
+                                          return SkillCard(
+                                            image: skill['image'],
+                                            title: skill['name'],
+                                            color: skill['color'],
+                                            description: skill['description'],
+                                          );
+                                        },
+                                      );
+                                    }),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    // Projects Section
+                                    Text(
+                                      Alltext.myword,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: aboutme,
+                                          color: Colors.grey.shade600),
+                                    ),
+                                    Divider(),
+                                    SizedBox(
+                                      key: Homepage.projectsKey,
+                                      height: 10,
+                                    ),
+                                    Consumer<MyworkController>(
+                                        builder: (context, provider, child) {
+                                      return GridView.builder(
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: provider.work.length,
+                                        gridDelegate:
+                                            SliverGridDelegateWithMaxCrossAxisExtent(
+                                          maxCrossAxisExtent: 380,
+                                          crossAxisSpacing: 20,
+                                          mainAxisSpacing: 20,
+                                          childAspectRatio:
+                                              width < 600 ? 1 : 0.85,
+                                        ),
+                                        itemBuilder: (context, index) {
+                                          final skill = provider.work[index];
+                                          return Workcard(
+                                            image: skill['image'],
+                                            title: skill['name'],
+                                            description: skill['description'],
+                                            link: Uri.parse(skill['link']),
+                                            maxline: maxline,
+                                          );
+                                        },
+                                      );
+                                    }),
+                                    // Contact Section anchor
+                                    SizedBox(
+                                      key: Homepage.contactKey,
+                                      height: 1,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 50,
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     ),
-                  ),
-                  if (width < 600)
-                    Bottombar(
-                      currentSection: _currentSection,
-                      onSectionSelected: _onSectionSelected,
-                    )
-                ],
-              ),
             ),
           ],
         ),
