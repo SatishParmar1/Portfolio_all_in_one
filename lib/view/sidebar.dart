@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../textdata/alllink.dart';
 import '../Uitilities/animated_button.dart';
+import 'homepage.dart';
 
 class Sidebar extends StatelessWidget {
+  final void Function(SidebarSection section)? onSectionSelected;
+  final SidebarSection? currentSection;
 
-  const Sidebar({super.key});
+  const Sidebar({super.key, this.onSectionSelected, this.currentSection});
 
   @override
   Widget build(BuildContext context) {
@@ -39,36 +42,42 @@ class Sidebar extends StatelessWidget {
                   _SidebarButton(
                     icon: Icons.home,
                     label: 'Home',
-                    onTap: () {},
+                    selected: currentSection == SidebarSection.home,
+                    onTap: () {
+                      onSectionSelected?.call(SidebarSection.home);
+                    },
                   ),
                   _SidebarButton(
                     icon: Icons.person,
                     label: 'About Me',
+                    selected: currentSection == SidebarSection.about,
                     onTap: () {
-
+                      onSectionSelected?.call(SidebarSection.about);
                     },
                   ),
                   _SidebarButton(
                     icon: Icons.star,
                     label: 'Skills',
+                    selected: currentSection == SidebarSection.skills,
                     onTap: () {
-
+                      onSectionSelected?.call(SidebarSection.skills);
                     },
                   ),
                   _SidebarButton(
                     icon: Icons.work,
                     label: 'Projects',
-                    onTap: () {},
-                  ),
-                  _SidebarButton(
-                    icon: Icons.description,
-                    label: 'Resume',
-                    onTap: () {},
+                    selected: currentSection == SidebarSection.projects,
+                    onTap: () {
+                      onSectionSelected?.call(SidebarSection.projects);
+                    },
                   ),
                   _SidebarButton(
                     icon: Icons.mail,
                     label: 'Contact',
-                    onTap: () {},
+                    selected: currentSection == SidebarSection.contact,
+                    onTap: () {
+                      onSectionSelected?.call(SidebarSection.contact);
+                    },
                   ),
                   const Spacer(),
                   // Social Icons
@@ -111,8 +120,8 @@ class _SidebarButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-  bool selected;
-   _SidebarButton({
+  final bool selected;
+  _SidebarButton({
     required this.icon,
     required this.label,
     required this.onTap,
