@@ -26,14 +26,15 @@ class Sidebar extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 40),
+
                   // Profile Image
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage(Alllink.logo),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                        borderRadius: BorderRadiusGeometry.circular(20),
+                        child: Image.asset(Alllink.logo)),
                   ),
-                  const SizedBox(height: 20),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   // Navigation Links
                   _SidebarButton(
                     icon: Icons.home,
@@ -57,42 +58,44 @@ class Sidebar extends StatelessWidget {
                   _SidebarButton(
                     icon: Icons.work,
                     label: 'Projects',
-
-  onTap: () {},
+                    onTap: () {},
                   ),
                   _SidebarButton(
                     icon: Icons.description,
                     label: 'Resume',
-  onTap: () {},
+                    onTap: () {},
                   ),
                   _SidebarButton(
                     icon: Icons.mail,
                     label: 'Contact',
-  onTap: () {},
+                    onTap: () {},
                   ),
                   const Spacer(),
                   // Social Icons
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 16, // horizontal space between items
+                      runSpacing: 16, // vertical space between lines (when it wraps)
+                      direction: Axis.horizontal,
                       children: [
                         _SocialIcon(
                           icon: Icons.linked_camera,
                           url: 'https://linkedin.com',
                         ),
-                        const SizedBox(width: 16),
                         _SocialIcon(
                           icon: Icons.code,
                           url: 'https://github.com',
                         ),
-                        const SizedBox(width: 16),
                         _SocialIcon(
                           icon: Icons.web,
                           url: 'https://yourwebsite.com',
                         ),
                       ],
                     ),
+
+
                   ),
                 ],
               ),
@@ -143,17 +146,29 @@ class _SidebarButton extends StatelessWidget {
                 ],
               )
             : Row(
-                children: [
-                  Icon(icon, color: color, size: 20),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Text(
-                      label,
-                      style: TextStyle(color: color, fontSize: 16, fontWeight: selected ? FontWeight.bold : FontWeight.normal),
+              children: [
+                Expanded(
+                  child: Wrap(
+                            alignment: WrapAlignment.spaceBetween,
+                            spacing: 16, // horizontal space between items
+                            runSpacing: 16, // vertical space between lines (when it wraps)
+                            direction: Axis.horizontal,
+                        children: [
+                          Center(child: Icon(icon, color: color, size: 20)),
+
+                          Center(
+                            child: Text(
+                              label,
+                              style: TextStyle(color: color, fontSize: 16, fontWeight: selected ? FontWeight.bold : FontWeight.normal),
+                            ),
+                          ),
+                        ]
+
+
                     ),
-                  ),
-                ],
-              ),
+                ),
+              ],
+            ),
       ),
     );
   }

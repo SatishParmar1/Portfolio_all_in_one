@@ -9,6 +9,7 @@ import '../Controllers/skill_controller.dart';
 import '../Uitilities/gridviewskills.dart';
 import '../textdata/alllink.dart';
 import '../textdata/alltext.dart';
+import 'bottombar.dart';
 import 'skill.dart';
 
 class Homepage extends StatelessWidget {
@@ -223,31 +224,7 @@ class Homepage extends StatelessWidget {
                     ),
                   ),
                   if (width < 600)
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: BottomNavigationBar(
-                        items: [
-                          BottomNavigationBarItem(
-                            icon: Icon(Icons.home),
-                            label: 'Home',
-                          ),
-                          BottomNavigationBarItem(
-                            icon: Icon(Icons.star),
-                            label: 'Skills',
-                          ),
-                        ],
-                        onTap: (index) {
-                          if (index == 1) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Skillpage(),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    ),
+                    Bottombar()
                 ],
               ),
             ),
