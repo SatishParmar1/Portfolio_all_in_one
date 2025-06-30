@@ -1,0 +1,38 @@
+name: Build and Deploy Flutter Web
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # --- ADD THIS BLOCK HERE ---
+    permissions:
+      contents: write # Allows the workflow to push commits to the repository
+      pages: write    # Specifically grants write access for GitHub Pages deployments
+      id-token: write # Recommended for OpenID Connect, used by GitHub Pages internally for enhanced security
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.5' # This is good, should fix Dart SDK issue
+          channel: 'stable' # Explicitly stating channel is good practice
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Web
+        run: flutter build web
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web
+          publish_branch: gh-pages

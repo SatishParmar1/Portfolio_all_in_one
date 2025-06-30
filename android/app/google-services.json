@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "595766370393",
+    "project_id": "portfolio-rockstar978312",
+    "storage_bucket": "portfolio-rockstar978312.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595766370393:android:16780e42bdc0bd4e6e9148",
+        "android_client_info": {
+          "package_name": "com.portfolio.just.explore.portfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFJnhQXsLkeLj7gwGbuykqV4CpcPv2z9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
