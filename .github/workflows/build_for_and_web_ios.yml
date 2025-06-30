@@ -36,21 +36,12 @@ jobs:
           mkdir web_build
           cp -r build/web/* web_build/
 
-      - name: Build Android APK
-        run: flutter build apk --release
-
-      - name: Prepare App Build Folder
-        run: |
-          rm -rf app_build
-          mkdir app_build
-          cp build/app/outputs/flutter-apk/app-release.apk app_build/
-
       - name: Commit Built Artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web_build app_build
-          git commit -m "chore: update built web and apk output" || echo "No changes to commit"
+          git add web_build 
+          git commit -m "chore: update built web" || echo "No changes to commit"
 
       - name: Push Changes
         uses: ad-m/github-push-action@v0.6.0
