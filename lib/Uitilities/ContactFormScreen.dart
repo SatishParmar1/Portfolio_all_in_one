@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/Controllers/contactformcontroller.dart';
+import 'package:provider/provider.dart';
 
 class ContactFormScreen extends StatefulWidget {
   @override
@@ -8,29 +10,6 @@ class ContactFormScreen extends StatefulWidget {
 class _ContactFormScreenState extends State<ContactFormScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _numberController = TextEditingController();
-  final _messageController = TextEditingController();
-
-  final FocusNode _nameFocus = FocusNode();
-  final FocusNode _emailFocus = FocusNode();
-  final FocusNode _numberFocus = FocusNode();
-  final FocusNode _messageFocus = FocusNode();
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _numberController.dispose();
-    _messageController.dispose();
-
-    _nameFocus.dispose();
-    _emailFocus.dispose();
-    _numberFocus.dispose();
-    _messageFocus.dispose();
-    super.dispose();
-  }
 
   InputDecoration _inputDecoration(String label, FocusNode focusNode, IconData icon) {
     return InputDecoration(
@@ -84,13 +63,24 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
     return null;
   }
 
-  void _handleSubmit() {
+  void handleSubmit(Contactformcontroller provider,BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      // If all validations pass
+      provider.Sendemail(context);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Form submitted successfully')),
+        SnackBar(content: Text('Form submitted successfully'),
+        closeIconColor: Colors.white,
+        showCloseIcon: true,
+        backgroundColor: Colors.green,
+        elevation: 1,),
       );
     } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill all data'),
+          closeIconColor: Colors.white,
+          showCloseIcon: true,
+          backgroundColor: Colors.red,
+          elevation: 1,),
+      );
       // Errors will show automatically
     }
   }
@@ -100,65 +90,77 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
     final spacing = SizedBox(height: 15);
 
     return
-      Padding(
-        padding: EdgeInsets.symmetric(vertical: 0),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                TextFormField(
-                  style: TextStyle(color: Colors.white),
-                  controller: _nameController,
-                  focusNode: _nameFocus,
-                  decoration: _inputDecoration('Name', _nameFocus,Icons.person_2_outlined),
-                  validator: _validateName,
-                ),
-                spacing,
-                TextFormField(
-                  controller: _emailController,
-                  focusNode: _emailFocus,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: _inputDecoration('Email', _emailFocus,Icons.email_outlined),
-                  validator: _validateEmail,
-                ),
-                spacing,
-                TextFormField(
-                  controller: _numberController,
-                  focusNode: _numberFocus,
-                  keyboardType: TextInputType.number,
-                  decoration: _inputDecoration('Phone Number', _numberFocus,Icons.numbers_outlined),
-                  validator: _validateNumber,
-                ),
-                spacing,
-                TextFormField(
-                  controller: _messageController,
-                  focusNode: _messageFocus,
-                  minLines: 2,
-                  maxLines: 4,
-                  decoration: _inputDecoration('Message', _messageFocus,Icons.message_outlined),
-                  validator: _validateMessage,
-                ),
-                spacing,
-                ElevatedButton(
-                  onPressed: _handleSubmit,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey.shade400,
-                    elevation: 2,
-                    padding: EdgeInsets.symmetric(vertical: 16,horizontal: 40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+      Consumer<Contactformcontroller>(
+        builder: (context,provider,child) {
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 0),
+            child: Form(
+              key: _formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      controller: provider.nameController,
+                      focusNode: provider.nameFocus,
+                      decoration: _inputDecoration(
+                          'Name', provider.nameFocus, Icons.person_2_outlined),
+                      validator: _validateName,
                     ),
-                  ),
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(fontSize: 18, color: Colors.black),
-                  ),
-                )
-              ],
+                    spacing,
+                    TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      controller: provider.emailController,
+                      focusNode: provider.emailFocus,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: _inputDecoration(
+                          'Email', provider.emailFocus, Icons.email_outlined),
+                      validator: _validateEmail,
+                    ),
+                    spacing,
+                    TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      controller: provider.numberController,
+                      focusNode:provider.numberFocus,
+                      keyboardType: TextInputType.number,
+                      decoration: _inputDecoration(
+                          'Phone Number', provider.numberFocus, Icons.numbers_outlined),
+                      validator: _validateNumber,
+                    ),
+                    spacing,
+                    TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      controller: provider.messageController,
+                      focusNode: provider.messageFocus,
+                      minLines: 2,
+                      maxLines: 4,
+                      decoration: _inputDecoration(
+                          'Message', provider.messageFocus, Icons.message_outlined),
+                      validator: _validateMessage,
+                    ),
+                    spacing,
+                    ElevatedButton(
+                      onPressed: (){handleSubmit(provider,context);},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey.shade400,
+                        elevation: 2,
+                        padding: EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 40),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        }
       );
   }
 }

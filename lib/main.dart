@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio/model/app_routes.dart';
 import 'package:provider/provider.dart';
 import 'Controllers/contact_controller.dart';
+import 'Controllers/contactformcontroller.dart';
 import 'Controllers/education_controller.dart';
 import 'Controllers/experience_controller.dart';
 import 'Controllers/mywork_controller.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => Contact_controller()),
           ChangeNotifierProvider(create: (_) => Experience_Controller()),
           ChangeNotifierProvider(create: (_) => Education_controller()),
+          ChangeNotifierProvider(create: (_) => Contactformcontroller()),
 
         ],
         child: MaterialApp.router(
