@@ -140,7 +140,13 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                     ),
                     spacing,
                     ElevatedButton(
-                      onPressed: (){handleSubmit(provider,context);},
+                      onPressed: (){
+                        if(!provider.formloading){
+                          handleSubmit(provider,context);
+                        }
+
+
+                        },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey.shade400,
                         elevation: 2,
@@ -150,7 +156,10 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      child: Text(
+                      child:provider.formloading?SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: Center(child: RefreshProgressIndicator(strokeWidth: 2,color: Colors.black,))): Text(
                         'Submit',
                         style: TextStyle(fontSize: 18, color: Colors.black),
                       ),
