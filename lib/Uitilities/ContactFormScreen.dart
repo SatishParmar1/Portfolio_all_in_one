@@ -144,8 +144,6 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                         if(!provider.formloading){
                           handleSubmit(provider,context);
                         }
-
-
                         },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey.shade400,

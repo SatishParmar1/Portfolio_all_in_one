@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart'as https;
 import 'package:flutter/cupertino.dart';
 
@@ -53,8 +54,21 @@ class Contactformcontroller with ChangeNotifier{
       print("Response data: $jsonResponse"); // Debug print
 
       if (response.statusCode == 200) {
-
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Form submitted successfully'),
+            closeIconColor: Colors.white,
+            showCloseIcon: true,
+            backgroundColor: Colors.green,
+            elevation: 1,),
+        );
       } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Please fill all data'),
+            closeIconColor: Colors.white,
+            showCloseIcon: true,
+            backgroundColor: Colors.red,
+            elevation: 1,),
+        );
         print(response.statusCode);
       }
       formloading = false;
