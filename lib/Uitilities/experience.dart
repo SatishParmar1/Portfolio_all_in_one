@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Controllers/experience_controller.dart';
+import 'package:portfolio/Uitilities/url_lancher.dart';
 import 'package:provider/provider.dart';
 
 class Experience extends StatefulWidget {
@@ -11,7 +12,7 @@ class Experience extends StatefulWidget {
 
 class _ExperienceState extends State<Experience> {
   bool _showAll = false;
-
+  Urllancher _urllancher = new Urllancher();
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -33,13 +34,13 @@ class _ExperienceState extends State<Experience> {
               hoverColor: Colors.grey.withOpacity(0.2),
               leading: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.white),
-                  shape: BoxShape.circle,
+                    border: Border.all(width: 1, color: Colors.white),
+                    shape: BoxShape.circle
                 ),
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 20,
-                  child: Image.asset(data['images'], fit: BoxFit.cover),
+                  backgroundImage: AssetImage(data['images']), // Use AssetImage with backgroundImage
                 ),
               ),
               title: Row(
@@ -69,7 +70,10 @@ class _ExperienceState extends State<Experience> {
               ),
               trailing: Icon(
                   Icons.arrow_forward_ios_rounded, color: Colors.white70),
-              onTap: () {},
+              onTap: () {
+
+                _urllancher.launchWebUrl(data['url']);
+              },
             ),
           );
         }

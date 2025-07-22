@@ -28,7 +28,12 @@ class Alllink{
   static String myimage2 = "assets/images/photo2.jpg";
   static String myimage3 = "assets/images/photo3.jpg";
   static String myimage4 = "assets/images/photo4.jpg";
-
-
-
+  static String pietlogo ="assets/images/pietlogo.png";
+  static String nobleschoollogo = "assets/images/nobleschoollogo.png";
+  static String celeballogo = "assets/images/celeballogo.png";
+  static String gdsclogo = "assets/images/gdsclogo.png";
+  static String internshalalogo = "assets/images/internshala.png";
+  static String learnandbuildlogo = "assets/images/learnandbuildlogo.png";
+  static String regriplogo = "assets/images/regriplogo.png";
+  static String smartinternzlogo = "assets/images/smartinternzlogo.png";
 }

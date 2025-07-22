@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 import 'package:portfolio/Controllers/mywork_controller.dart';
 import 'package:portfolio/Uitilities/education.dart';
 import 'package:portfolio/Uitilities/experience.dart';
@@ -9,6 +8,7 @@ import 'package:portfolio/Uitilities/gridviewwork.dart';
 import 'package:portfolio/view/sidebar.dart';
 import 'package:provider/provider.dart';
 import 'package:marquee/marquee.dart';
+import 'dart:async'; // Add this import for Timer
 
 import '../Controllers/skill_controller.dart';
 import '../Uitilities/ContactFormScreen.dart';
@@ -51,11 +51,14 @@ class _HomepageState extends State<Homepage> {
 
   String _marqueeText = '';
   bool _showMarquee = false;
+  
+  // Add throttling for scroll events
+  Timer? _scrollThrottle;
 
   @override
   void initState() {
     super.initState();
-    Homepage.scrollController.addListener(_onScroll);
+    Homepage.scrollController.addListener(_onScrollThrottled);
     _fetchMarqueeConfig();
   }
 
@@ -70,8 +73,18 @@ class _HomepageState extends State<Homepage> {
 
   @override
   void dispose() {
-    Homepage.scrollController.removeListener(_onScroll);
+    _scrollThrottle?.cancel();
+    Homepage.scrollController.removeListener(_onScrollThrottled);
     super.dispose();
+  }
+
+  // Throttled scroll listener to improve performance
+  void _onScrollThrottled() {
+    if (_scrollThrottle?.isActive ?? false) return;
+    
+    _scrollThrottle = Timer(Duration(milliseconds: 100), () {
+      _onScroll();
+    });
   }
 
   void _onScroll() {
@@ -195,7 +208,7 @@ class _HomepageState extends State<Homepage> {
                               Positioned.fill(
                                 child: SingleChildScrollView(
                                   controller: Homepage.scrollController,
-                                  physics: BouncingScrollPhysics(),
+                                  physics: ClampingScrollPhysics(), // Better performance for web
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -258,6 +271,8 @@ class _HomepageState extends State<Homepage> {
                                               Image.asset(
                                                 Alllink.satishimage,
                                                 height: imageHeight,
+                                                fit: BoxFit.cover,
+                                                cacheHeight: (imageHeight * MediaQuery.of(context).devicePixelRatio).round(),
                                               ),
                                             ],
                                           ),
@@ -347,6 +362,8 @@ class _HomepageState extends State<Homepage> {
                                                 shrinkWrap: true,
                                                 physics: NeverScrollableScrollPhysics(),
                                                 itemCount: provider.skills.length,
+                                                addAutomaticKeepAlives: false, // Improve performance
+                                                addRepaintBoundaries: false, // Improve performance
                                                 gridDelegate:
                                                     SliverGridDelegateWithMaxCrossAxisExtent(
                                                   maxCrossAxisExtent: 100,
@@ -357,11 +374,13 @@ class _HomepageState extends State<Homepage> {
                                                 ),
                                                 itemBuilder: (context, index) {
                                                   final skill = provider.skills[index];
-                                                  return SkillCard(
-                                                    image: skill['image'],
-                                                    title: skill['name'],
-                                                    color: skill['color'],
-                                                    description: skill['description'],
+                                                  return RepaintBoundary( // Isolate repaints
+                                                    child: SkillCard(
+                                                      image: skill['image'],
+                                                      title: skill['name'],
+                                                      color: skill['color'],
+                                                      description: skill['description'],
+                                                    ),
                                                   );
                                                 },
                                               );
@@ -388,6 +407,8 @@ class _HomepageState extends State<Homepage> {
                                                 shrinkWrap: true,
                                                 physics: NeverScrollableScrollPhysics(),
                                                 itemCount: provider.work.length,
+                                                addAutomaticKeepAlives: false, // Improve performance
+                                                addRepaintBoundaries: false, // Improve performance
                                                 gridDelegate:
                                                     SliverGridDelegateWithMaxCrossAxisExtent(
                                                   maxCrossAxisExtent: 380,
@@ -398,12 +419,14 @@ class _HomepageState extends State<Homepage> {
                                                 ),
                                                 itemBuilder: (context, index) {
                                                   final skill = provider.work[index];
-                                                  return Workcard(
-                                                    image: skill['image'],
-                                                    title: skill['name'],
-                                                    description: skill['description'],
-                                                    link: Uri.parse(skill['link']),
-                                                    maxline: maxline,
+                                                  return RepaintBoundary( // Isolate repaints
+                                                    child: Workcard(
+                                                      image: skill['image'],
+                                                      title: skill['name'],
+                                                      description: skill['description'],
+                                                      link: Uri.parse(skill['link']),
+                                                      maxline: maxline,
+                                                    ),
                                                   );
                                                 },
                                               );
@@ -517,7 +540,7 @@ class _HomepageState extends State<Homepage> {
                             children: [
                               SingleChildScrollView(
                                 controller: Homepage.scrollController,
-                                physics: BouncingScrollPhysics(),
+                                physics: ClampingScrollPhysics(), // Better performance for web
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -555,6 +578,8 @@ class _HomepageState extends State<Homepage> {
                                             Image.asset(
                                               Alllink.satishimage,
                                               height: imageHeight,
+                                              fit: BoxFit.cover,
+                                              cacheHeight: (imageHeight * MediaQuery.of(context).devicePixelRatio).round(),
                                             ),
                                           ],
                                         ),
@@ -641,6 +666,8 @@ class _HomepageState extends State<Homepage> {
                                               shrinkWrap: true,
                                               physics: NeverScrollableScrollPhysics(),
                                               itemCount: provider.skills.length,
+                                              addAutomaticKeepAlives: false, // Improve performance
+                                              addRepaintBoundaries: false, // Improve performance
                                               gridDelegate:
                                                   SliverGridDelegateWithMaxCrossAxisExtent(
                                                 maxCrossAxisExtent: 120,
@@ -651,11 +678,13 @@ class _HomepageState extends State<Homepage> {
                                               ),
                                               itemBuilder: (context, index) {
                                                 final skill = provider.skills[index];
-                                                return SkillCard(
-                                                  image: skill['image'],
-                                                  title: skill['name'],
-                                                  color: skill['color'],
-                                                  description: skill['description'],
+                                                return RepaintBoundary( // Isolate repaints
+                                                  child: SkillCard(
+                                                    image: skill['image'],
+                                                    title: skill['name'],
+                                                    color: skill['color'],
+                                                    description: skill['description'],
+                                                  ),
                                                 );
                                               },
                                             );
@@ -682,6 +711,8 @@ class _HomepageState extends State<Homepage> {
                                               shrinkWrap: true,
                                               physics: NeverScrollableScrollPhysics(),
                                               itemCount: provider.work.length,
+                                              addAutomaticKeepAlives: false, // Improve performance
+                                              addRepaintBoundaries: false, // Improve performance
                                               gridDelegate:
                                                   SliverGridDelegateWithMaxCrossAxisExtent(
                                                 maxCrossAxisExtent: 380,
@@ -692,12 +723,14 @@ class _HomepageState extends State<Homepage> {
                                               ),
                                               itemBuilder: (context, index) {
                                                 final skill = provider.work[index];
-                                                return Workcard(
-                                                  image: skill['image'],
-                                                  title: skill['name'],
-                                                  description: skill['description'],
-                                                  link: Uri.parse(skill['link']),
-                                                  maxline: maxline,
+                                                return RepaintBoundary( // Isolate repaints
+                                                  child: Workcard(
+                                                    image: skill['image'],
+                                                    title: skill['name'],
+                                                    description: skill['description'],
+                                                    link: Uri.parse(skill['link']),
+                                                    maxline: maxline,
+                                                  ),
                                                 );
                                               },
                                             );

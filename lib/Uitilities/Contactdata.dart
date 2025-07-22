@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/Uitilities/url_lancher.dart';
 import 'package:provider/provider.dart';
 
 import '../Controllers/contact_controller.dart';
@@ -7,6 +8,7 @@ class Contactdata extends StatelessWidget {
   final bool isRow;
   Contactdata({super.key, this.isRow = false});
 
+  Urllancher _urllancher = new Urllancher();
   @override
   Widget build(BuildContext context) {
     return Consumer<Contact_controller>(
@@ -35,7 +37,20 @@ class Contactdata extends StatelessWidget {
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios_rounded, color: Colors.white70,),
-              onTap: () {},
+              onTap: () {
+                if(data['icon'] == Icons.call){
+                  _urllancher.launchPhoneNumber("9785470525");
+                }else if(data['icon']==Icons.alternate_email){
+                  _urllancher.launchEmail(
+                    'satishparmarparmar486@gmail.com',
+                    subject: 'send to satish(Portfolio)',
+                    body: 'hi,',
+                  );
+                }else{
+                  _urllancher.launchWebUrl("https://www.google.com/maps/place/Jaipur");
+                }
+
+              },
             ),
           );
         },

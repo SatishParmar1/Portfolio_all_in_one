@@ -7,15 +7,15 @@ class Education_controller with ChangeNotifier {
     {
       "title": "Poornima Institute of Engineering and Technology Jaipur",
       "subtitle": "B.Tech CSE",
-      "images": Alllink.iot,
-      "url": "",
+      "images": Alllink.pietlogo,
+      "url": "https://www.poornima.org",
       "date": "Oct 2021 - Apr 2025 . 3 years 7 mons",
     },
     {
       "title": "Noble School Falna",
       "subtitle": "PCM",
-      "images": Alllink.api,
-      "url": "",
+      "images": Alllink.nobleschoollogo,
+      "url": "https://rnpsfalna.in",
       "date": "Jul 2019 - Jun 2021 . 2 years",
     },
   ];

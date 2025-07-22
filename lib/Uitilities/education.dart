@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Controllers/education_controller.dart';
+import 'package:portfolio/Uitilities/url_lancher.dart';
 import 'package:provider/provider.dart';
 class Education extends StatelessWidget {
-  const Education({super.key});
+   Education({super.key});
 
+  Urllancher _urllancher = new Urllancher();
   @override
   Widget build(BuildContext context) {
     return Consumer<Education_controller>(
@@ -26,13 +28,13 @@ class Education extends StatelessWidget {
                 hoverColor: Colors.grey.withValues(alpha: 0.2),
                 leading: Container(
                   decoration: BoxDecoration(
-                      border: Border.all(width: 1,color: Colors.white),
+                      border: Border.all(width: 1, color: Colors.white),
                       shape: BoxShape.circle
                   ),
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 20,
-                    child: Image.asset(data['images'],fit: BoxFit.fill,),
+                    backgroundImage: AssetImage(data['images']), // Use AssetImage with backgroundImage
                   ),
                 ),
                 title: Text(
@@ -54,7 +56,10 @@ class Education extends StatelessWidget {
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios_rounded, color: Colors.white70,),
-                onTap: () {},
+                onTap: () {
+
+                  _urllancher.launchWebUrl(data['url']);
+                },
               ),
             );
           },

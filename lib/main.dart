@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart'; // Add for kIsWeb
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -14,10 +15,14 @@ import 'firebase_options.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+  
+  // Only set orientation for mobile platforms
+  if (!kIsWeb) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -48,27 +53,35 @@ class MyApp extends StatelessWidget {
         child: MaterialApp.router(
           routerConfig: _router,
           debugShowCheckedModeBanner: false,
-        title: 'Who is Satish?',
-        theme: ThemeData(
+          title: 'Who is Satish?',
+          // Performance optimization for web
+          scrollBehavior: kIsWeb ? const MaterialScrollBehavior().copyWith(
+            scrollbars: false,
+          ) : null,
+          theme: ThemeData(
             useMaterial3: true,
             fontFamily: 'Outfit',
-
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-          primaryColor:Colors.black,
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+            primaryColor: Colors.black,
             textButtonTheme: TextButtonThemeData(
-            style: ButtonStyle(
-            )
-        ),
-            listTileTheme: ListTileThemeData(
-
-        ),
-          scaffoldBackgroundColor: Colors.black,
-            textTheme: TextTheme(
-
-        )
-        ),
-
+              style: ButtonStyle(),
             ),
+            listTileTheme: ListTileThemeData(),
+            scaffoldBackgroundColor: Colors.black,
+            textTheme: TextTheme(),
+            // Performance optimization: disable animations on web if needed
+            pageTransitionsTheme: kIsWeb ? const PageTransitionsTheme(
+              builders: {
+                TargetPlatform.fuchsia: FadeUpwardsPageTransitionsBuilder(),
+                TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+                TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+                TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
+                TargetPlatform.linux: FadeUpwardsPageTransitionsBuilder(),
+                TargetPlatform.windows: FadeUpwardsPageTransitionsBuilder(),
+              },
+            ) : null,
+          ),
+        ),
       );
   }
 }

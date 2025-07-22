@@ -32,43 +32,43 @@ class Experience_Controller with ChangeNotifier {
       {
         "title": "Regrip India PVT.LTD.",
         "subtitle": "Flutter Developer",
-        "images": Alllink.iot,
-        "url": "",
+        "images": Alllink.regriplogo,
+        "url": "https://regrip.in/",
         "date": "Jan 2025 - Present . $currentExperienceDuration"
       },
       {
         "title": "SmartInternz",
         "subtitle": "Salesforce Developer Intern",
-        "images": Alllink.api,
-        "url": "",
+        "images": Alllink.smartinternzlogo,
+        "url": "https://smartinternz.com/",
         "date": "Jul 2024 - Aug 2024 . 2 mons"
       },
       {
         "title": "Celebal Technology",
         "subtitle": "Cloud Infra and Security Intern",
-        "images": Alllink.git,
-        "url": "",
+        "images": Alllink.celeballogo,
+        "url": "https://celebaltech.com/",
         "date": "May 2024 - Jul 2024 . 3 mons"
       },
       {
         "title": "GDSC Poornima",
         "subtitle": "GDSC Android Lead",
-        "images": Alllink.git,
-        "url": "",
+        "images": Alllink.gdsclogo,
+        "url": "https://developers.google.com/community",
         "date": "Oct 2023 - Jul 2024 . 10 mons"
       },
       {
         "title": "Learn and Build",
         "subtitle": "Flutter Developer Intern",
-        "images": Alllink.git,
-        "url": "",
+        "images": Alllink.learnandbuildlogo,
+        "url": "https://learnandbuild.in/",
         "date": "Aug 2023 - Oct 2023 . 3 mons"
       },
       {
         "title": "Internshala",
         "subtitle": "Internshala Training Partner",
-        "images": Alllink.git,
-        "url": "",
+        "images": Alllink.internshalalogo,
+        "url": "https://internshala.com/",
         "date": "May 2023 - Jul 2023 . 3 mons"
       },
     ];
