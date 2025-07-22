@@ -496,19 +496,15 @@ class _HomepageState extends State<Homepage> {
                                                 children: [
                                                   SocialmediaIcon(
                                                     icon: FontAwesomeIcons.github,
-                                                    url: 'https://linkedin.com',
+                                                    url: 'https://github.com/SatishParmar1',
                                                   ),
                                                   SocialmediaIcon(
                                                     icon: FontAwesomeIcons.instagram,
-                                                    url: 'https://github.com',
+                                                    url: 'https://instagram.com/satish_parmar_978',
                                                   ),
                                                   SocialmediaIcon(
                                                     icon:FontAwesomeIcons.linkedinIn,
-                                                    url: 'https://yourwebsite.com',
-                                                  ),
-                                                  SocialmediaIcon(
-                                                    icon:FontAwesomeIcons.facebookF,
-                                                    url: 'https://yourwebsite.com',
+                                                    url: 'https://www.linkedin.com/in/satish-parmar-ak978312',
                                                   ),
                                                 ],
                                               ),
@@ -822,19 +818,15 @@ class _HomepageState extends State<Homepage> {
                                               children: [
                                                 SocialmediaIcon(
                                                   icon: FontAwesomeIcons.github,
-                                                  url: 'https://linkedin.com',
+                                                  url: 'https://github.com/SatishParmar1',
                                                 ),
                                                 SocialmediaIcon(
                                                   icon: FontAwesomeIcons.instagram,
-                                                  url: 'https://github.com',
+                                                  url: 'https://instagram.com/satish_parmar_978',
                                                 ),
                                                 SocialmediaIcon(
                                                   icon:FontAwesomeIcons.linkedinIn,
-                                                  url: 'https://yourwebsite.com',
-                                                ),
-                                                SocialmediaIcon(
-                                                  icon:FontAwesomeIcons.facebookF,
-                                                  url: 'https://yourwebsite.com',
+                                                  url: 'https://www.linkedin.com/in/satish-parmar-ak978312',
                                                 ),
                                               ],
                                             ),

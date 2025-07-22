@@ -91,15 +91,15 @@ class Sidebar extends StatelessWidget {
                       children: [
                         SocialIcon(
                           icon: Icons.linked_camera,
-                          url: 'https://linkedin.com',
+                          url: 'https://instagram.com/satish_parmar_978',
                         ),
                         SocialIcon(
                           icon: Icons.code,
-                          url: 'https://github.com',
+                          url: 'https://github.com/SatishParmar1',
                         ),
                         SocialIcon(
                           icon: Icons.web,
-                          url: 'https://yourwebsite.com',
+                          url: 'https://www.linkedin.com/in/satish-parmar-ak978312',
                         ),
                       ],
                     ),
