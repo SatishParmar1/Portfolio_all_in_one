@@ -7,25 +7,25 @@ class MyworkController with ChangeNotifier{
     {
       'name': 'Trend Wave',
       'image': Alllink.trendwave,
-      'description': 'E-commerce app with clean UI and smooth animations. Features include cart management, wishlist, and secure payments.',
+      'description': 'The Trend Wave App is a dynamic news platform built with Flutter, designed to deliver current news by fetching real-time data from the Open News API.',
       'link': "https://drive.google.com/file/d/1rVSYGxFFDSulH_nSD8-QUoCf-IA9_CmK/view"
     },
     {
       'name': 'Shree Sai',
       'image': Alllink.shreesai,
-      'description': 'Temple management app with donation tracking and event scheduling. Includes live darshan and prasad booking features.',
+      'description': 'The Shree Sai Chemist App is a comprehensive e-commerce solution developed using Flutter. It allows users to conveniently order medicines and other products directly from their local chemist.',
       'link': "https://drive.google.com/file/d/1NQ-z8KPD4YIl_-CSoq7L9Ky2SCsGBicP/view?usp=sharing"
     },
     {
       'name': 'Proflamingo',
       'image': Alllink.proflamingo,
-      'description': 'Professional portfolio website template with responsive design. Built with modern web technologies and animations.',
+      'description': 'Proflamingo is an educational web platform created for colleges and schools to provide a secure environment where teachers can conduct student tests. In addition to testing, the site helps students prepare for placements.',
       'link': "https://satishparmar1.github.io/Proflamingo/"
     },
     {
       'name': 'Sky View',
       'image': Alllink.skyview,
-      'description': 'Weather forecast app with real-time updates and interactive maps. Features detailed weather information and alerts.',
+      'description': 'a dynamic weather forecasting feature by integrating the Open Weather API. The function pinpoints a users location using latitude and longitude to deliver precise, real-time weather data.',
       'link': "https://drive.google.com/file/d/1mZy8x7E-3vFu-RmhEyVLmf8H6naHR9wC/view"
     },
     {
