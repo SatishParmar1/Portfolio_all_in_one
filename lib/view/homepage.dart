@@ -65,6 +65,10 @@ class _HomepageState extends State<Homepage> {
   Future<void> _fetchMarqueeConfig() async {
     final remoteConfig = Firebaseremoteconfig();
     final config = await remoteConfig.fetchMarqueeConfig();
+
+    // Add this line to see exactly what you're getting from Firebase
+    print('Fetched Remote Config: $config');
+
     setState(() {
       _marqueeText = config['titlestring'] ?? '';
       _showMarquee = (config['showtitle'] == true) && _marqueeText.isNotEmpty;
@@ -181,7 +185,6 @@ class _HomepageState extends State<Homepage> {
       aboutme = width * 0.02;
       maxline = 2;
     }
-
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -213,32 +216,6 @@ class _HomepageState extends State<Homepage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      // Home Section
-                                      if (_showMarquee)
-                                        Container(
-                                          width: double.infinity,
-                                          height: 40,
-                                          color: Colors.black87,
-                                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                                          child: Marquee(
-                                            text: _marqueeText,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18,
-                                            ),
-                                            scrollAxis: Axis.horizontal,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            blankSpace: 80.0,
-                                            velocity: 40.0,
-                                            pauseAfterRound: Duration(seconds: 1),
-                                            startPadding: 10.0,
-                                            accelerationDuration: Duration(seconds: 1),
-                                            accelerationCurve: Curves.linear,
-                                            decelerationDuration: Duration(milliseconds: 500),
-                                            decelerationCurve: Curves.easeOut,
-                                          ),
-                                        ),
                                       Container(
                                         key: Homepage.homeKey,
                                         child: Center(
@@ -283,7 +260,7 @@ class _HomepageState extends State<Homepage> {
                                       ),
                                       // About Section
                                       Padding(
-                                        key: Homepage.aboutKey,
+
                                         padding:
                                             EdgeInsets.symmetric(horizontal: semmenticpadding),
                                         child: Column(
@@ -308,6 +285,7 @@ class _HomepageState extends State<Homepage> {
                                               textAlign: TextAlign.justify,
                                             ),
                                             SizedBox(
+                                              key: Homepage.aboutKey,
                                               height: 30,
                                             ),
                                             Text(
@@ -386,7 +364,7 @@ class _HomepageState extends State<Homepage> {
                                               );
                                             }),
                                             SizedBox(
-                                              key: Homepage.projectsKey,
+
                                               height: 30,
                                             ),
                                             // Projects Section
@@ -433,7 +411,7 @@ class _HomepageState extends State<Homepage> {
                                             }),
                                             // Contact Section anchor
                                             SizedBox(
-                                              key: Homepage.contactKey,
+                                              key: Homepage.projectsKey,
                                               height: 30,
                                             ),
                                             // Projects Section
@@ -453,10 +431,11 @@ class _HomepageState extends State<Homepage> {
                                                   return Gridviewphotos();
                                                 }),
 
-
                                             SizedBox(
+                                              key: Homepage.contactKey,
                                               height: 30,
                                             ),
+
                                             // Projects Section
                                             Text(
                                               Alltext.contact,
@@ -541,9 +520,38 @@ class _HomepageState extends State<Homepage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
+                                    if (_showMarquee)
+                                      Container(
+                                        key: Homepage.homeKey,
+                                        width: double.infinity,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                            color: Colors.black87,
+                                           /* border: Border.all(color: Colors.grey,width: 2)*/
+                                        ),
+                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        child: Marquee(
+                                          text: _marqueeText,
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                          ),
+                                          scrollAxis: Axis.horizontal,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          blankSpace: 80.0,
+                                          velocity: 40.0,
+                                          pauseAfterRound: Duration(seconds: 1),
+                                          startPadding: 10.0,
+                                          accelerationDuration: Duration(seconds: 1),
+                                          accelerationCurve: Curves.bounceIn,
+                                          decelerationDuration: Duration(milliseconds: 500),
+                                          decelerationCurve: Curves.easeOut,
+                                        ),
+                                      ),
                                     // Home Section
                                     Container(
-                                      key: Homepage.homeKey,
+                                      key: (_showMarquee)?null:Homepage.homeKey,
                                       child: Center(
                                         child: Column(
                                           children: [
@@ -611,6 +619,7 @@ class _HomepageState extends State<Homepage> {
                                             textAlign: TextAlign.justify,
                                           ),
                                           SizedBox(
+
                                             height: 30,
                                           ),
                                           Text(
@@ -643,7 +652,7 @@ class _HomepageState extends State<Homepage> {
                                           Education(),
 
 
-
+                                          SizedBox( key: Homepage.skillsKey,height: 30,),
                                           Text(
                                             Alltext.skill,
                                             style: TextStyle(
@@ -653,7 +662,7 @@ class _HomepageState extends State<Homepage> {
                                           ),
                                           Divider(),
                                           SizedBox(
-                                            key: Homepage.skillsKey,
+
                                             height: 10,
                                           ),
                                           Consumer<Skill_controller>(
@@ -686,6 +695,7 @@ class _HomepageState extends State<Homepage> {
                                             );
                                           }),
                                           SizedBox(
+                                            key: Homepage.projectsKey,
                                             height: 30,
                                           ),
                                           // Projects Section
@@ -698,7 +708,7 @@ class _HomepageState extends State<Homepage> {
                                           ),
                                           Divider(),
                                           SizedBox(
-                                            key: Homepage.projectsKey,
+
                                             height: 10,
                                           ),
                                           Consumer<MyworkController>(
@@ -731,13 +741,8 @@ class _HomepageState extends State<Homepage> {
                                               },
                                             );
                                           }),
-                                          // Contact Section anchor
 
-                                          SizedBox(
-                                            key: Homepage.contactKey,
-                                            height: 30,
-                                          ),
-                                          // Projects Section
+                                          SizedBox(height: 30,),
                                           Text(
                                             Alltext.photos,
                                             style: TextStyle(
@@ -754,6 +759,10 @@ class _HomepageState extends State<Homepage> {
                                                 return Gridviewphotos();
                                               }),
                                           // Add Contactdata under photos
+                                          SizedBox(
+                                            key: Homepage.contactKey,
+                                            height: 30,
+                                          ),
                                           SizedBox(
                                             height: 30,
                                           ),

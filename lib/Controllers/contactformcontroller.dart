@@ -55,12 +55,16 @@ class Contactformcontroller with ChangeNotifier{
 
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Form submitted successfully'),
+          SnackBar(content: Text('I have received your message and will get back to you as soon as possible via Email'),
             closeIconColor: Colors.white,
             showCloseIcon: true,
             backgroundColor: Colors.green,
             elevation: 1,),
         );
+        nameController.clear();
+        emailController.clear();
+        messageController.clear();
+        numberController.clear();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Please fill all data'),

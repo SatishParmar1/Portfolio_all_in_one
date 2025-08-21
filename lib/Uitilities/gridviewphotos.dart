@@ -13,19 +13,19 @@ class _GridviewphotosState extends State<Gridviewphotos> {
   final List<Map<String, String>> images = [
     {
       'image': Alllink.myimage1,
-      'description': Alltext.aboutmedata,
+      'description': Alltext.image1about,
     },
     {
       'image': Alllink.myimage2,
-      'description': Alltext.aboutmedata,
+      'description': Alltext.image2about,
     },
     {
       'image': Alllink.myimage3,
-      'description': Alltext.aboutmedata,
+      'description': Alltext.image3about,
     },
     {
       'image': Alllink.myimage4,
-      'description': Alltext.aboutmedata,
+      'description': Alltext.image4about,
     },
   ];
 
@@ -39,7 +39,7 @@ class _GridviewphotosState extends State<Gridviewphotos> {
       builder: (context) {
         return DraggableScrollableSheet(
           expand: false,
-          initialChildSize: 0.95,
+          initialChildSize: 0.98,
           minChildSize: 0.7,
           maxChildSize: 1.0,
           builder: (context, scrollController) {
@@ -167,7 +167,8 @@ class _GridviewphotosState extends State<Gridviewphotos> {
                     fontSize: 16,
                     color: Colors.white70,
                   ),
-                  textAlign: TextAlign.center,
+                /*  textAlign: TextAlign.center,*/
+                  textAlign: TextAlign.justify,
                 ),
                 SizedBox(height: 20),
                 TextButton(
@@ -191,7 +192,6 @@ class _GridviewphotosState extends State<Gridviewphotos> {
     final width = MediaQuery.of(context).size.width;
     final crossAxisCount = width < 600 ? 1 : 3;
     final showShowMore = images.length > _visibleCount;
-
     return Column(
       children: [
         GridView.builder(

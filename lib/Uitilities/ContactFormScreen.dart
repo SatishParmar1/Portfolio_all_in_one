@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:portfolio/Controllers/contactformcontroller.dart';
 import 'package:provider/provider.dart';
 
@@ -67,7 +68,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
     if (_formKey.currentState!.validate()) {
       provider.Sendemail(context);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Form submitted successfully'),
+        SnackBar(content: Text('Message Sending, you Will Notify by Email'),
         closeIconColor: Colors.white,
         showCloseIcon: true,
         backgroundColor: Colors.green,
@@ -102,6 +103,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                     TextFormField(
                       style: TextStyle(color: Colors.white),
                       controller: provider.nameController,
+                      keyboardType: TextInputType.name,
                       focusNode: provider.nameFocus,
                       decoration: _inputDecoration(
                           'Name', provider.nameFocus, Icons.person_2_outlined),
@@ -126,6 +128,10 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                       decoration: _inputDecoration(
                           'Phone Number', provider.numberFocus, Icons.numbers_outlined),
                       validator: _validateNumber,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly, // Allow only digits
+                        LengthLimitingTextInputFormatter(10), // Limit to 10 characters
+                      ],
                     ),
                     spacing,
                     TextFormField(
