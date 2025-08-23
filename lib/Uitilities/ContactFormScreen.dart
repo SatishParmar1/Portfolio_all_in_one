@@ -97,79 +97,77 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
             padding: EdgeInsets.symmetric(vertical: 0),
             child: Form(
               key: _formKey,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    TextFormField(
-                      style: TextStyle(color: Colors.white),
-                      controller: provider.nameController,
-                      keyboardType: TextInputType.name,
-                      focusNode: provider.nameFocus,
-                      decoration: _inputDecoration(
-                          'Name', provider.nameFocus, Icons.person_2_outlined),
-                      validator: _validateName,
-                    ),
-                    spacing,
-                    TextFormField(
-                      style: TextStyle(color: Colors.white),
-                      controller: provider.emailController,
-                      focusNode: provider.emailFocus,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: _inputDecoration(
-                          'Email', provider.emailFocus, Icons.email_outlined),
-                      validator: _validateEmail,
-                    ),
-                    spacing,
-                    TextFormField(
-                      style: TextStyle(color: Colors.white),
-                      controller: provider.numberController,
-                      focusNode:provider.numberFocus,
-                      keyboardType: TextInputType.number,
-                      decoration: _inputDecoration(
-                          'Phone Number', provider.numberFocus, Icons.numbers_outlined),
-                      validator: _validateNumber,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly, // Allow only digits
-                        LengthLimitingTextInputFormatter(10), // Limit to 10 characters
-                      ],
-                    ),
-                    spacing,
-                    TextFormField(
-                      style: TextStyle(color: Colors.white),
-                      controller: provider.messageController,
-                      focusNode: provider.messageFocus,
-                      minLines: 2,
-                      maxLines: 4,
-                      decoration: _inputDecoration(
-                          'Message', provider.messageFocus, Icons.message_outlined),
-                      validator: _validateMessage,
-                    ),
-                    spacing,
-                    ElevatedButton(
-                      onPressed: (){
-                        if(!provider.formloading){
-                          handleSubmit(provider,context);
-                        }
-                        },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey.shade400,
-                        elevation: 2,
-                        padding: EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 40),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
+              child: Column(
+                children: [
+                  TextFormField(
+                    style: TextStyle(color: Colors.white),
+                    controller: provider.nameController,
+                    keyboardType: TextInputType.name,
+                    focusNode: provider.nameFocus,
+                    decoration: _inputDecoration(
+                        'Name', provider.nameFocus, Icons.person_2_outlined),
+                    validator: _validateName,
+                  ),
+                  spacing,
+                  TextFormField(
+                    style: TextStyle(color: Colors.white),
+                    controller: provider.emailController,
+                    focusNode: provider.emailFocus,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: _inputDecoration(
+                        'Email', provider.emailFocus, Icons.email_outlined),
+                    validator: _validateEmail,
+                  ),
+                  spacing,
+                  TextFormField(
+                    style: TextStyle(color: Colors.white),
+                    controller: provider.numberController,
+                    focusNode:provider.numberFocus,
+                    keyboardType: TextInputType.number,
+                    decoration: _inputDecoration(
+                        'Phone Number', provider.numberFocus, Icons.numbers_outlined),
+                    validator: _validateNumber,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly, // Allow only digits
+                      LengthLimitingTextInputFormatter(10), // Limit to 10 characters
+                    ],
+                  ),
+                  spacing,
+                  TextFormField(
+                    style: TextStyle(color: Colors.white),
+                    controller: provider.messageController,
+                    focusNode: provider.messageFocus,
+                    minLines: 2,
+                    maxLines: 4,
+                    decoration: _inputDecoration(
+                        'Message', provider.messageFocus, Icons.message_outlined),
+                    validator: _validateMessage,
+                  ),
+                  spacing,
+                  ElevatedButton(
+                    onPressed: (){
+                      if(!provider.formloading){
+                        handleSubmit(provider,context);
+                      }
+                      },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey.shade400,
+                      elevation: 2,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      child:provider.formloading?SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: Center(child: RefreshProgressIndicator(strokeWidth: 2,color: Colors.black,))): Text(
-                        'Submit',
-                        style: TextStyle(fontSize: 18, color: Colors.black),
-                      ),
-                    )
-                  ],
-                ),
+                    ),
+                    child:provider.formloading?SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: Center(child: RefreshProgressIndicator(strokeWidth: 2,color: Colors.black,))): Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                  )
+                ],
               ),
             ),
           );

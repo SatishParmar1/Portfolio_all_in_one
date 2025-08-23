@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../Uitilities/url_lancher.dart';
 import '../textdata/alllink.dart';
 import '../Uitilities/animated_button.dart';
 import 'homepage.dart';
@@ -91,7 +92,7 @@ class Sidebar extends StatelessWidget {
                       children: [
                         SocialIcon(
                           icon: Icons.linked_camera,
-                          url: 'https://instagram.com/satish_parmar_978',
+                          url: 'https://www.instagram.com/sa30_parmar/',
                         ),
                         SocialIcon(
                           icon: Icons.code,
@@ -186,13 +187,14 @@ class _SidebarButton extends StatelessWidget {
 class SocialIcon extends StatelessWidget {
   final IconData icon;
   final String url;
-  const SocialIcon({required this.icon, required this.url});
+   SocialIcon({required this.icon, required this.url});
 
+  Urllancher _urllancher = new Urllancher();
   @override
   Widget build(BuildContext context) {
     return AnimatedButton(
       onTap: () {
-        // TODO: Implement launch URL
+        _urllancher.launchInBrowser(Uri.parse(url));
       },
       defaultColor: Colors.grey[800],
       hoverColor: Colors.blueGrey[700],
