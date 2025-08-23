@@ -1,5 +1,5 @@
 class Alllink{
-  static String satishimage = "assets/images/headerlogo4.png";
+  static String satishimage = "https://ik.imagekit.io/rh19kamog/headerlogo4.png?updatedAt=1755969710435";
   static String androidstudio = "assets/images/android-studio.png";
   static String api = "assets/images/api.png";
   static String arduino = "assets/images/arduino.png";
@@ -16,18 +16,18 @@ class Alllink{
   static String sql = "assets/images/sql.png";
   static String sqlite = "assets/images/sqlite.png";
   static String vscode = "assets/images/vscode.png";
-  static String proflamingo = "assets/images/flamingo.jpg";
-  static String iot1 = "assets/images/iot1.jpg";
-  static String trendwave = "assets/images/news.jpg";
-  static String rmsystem = "assets/images/rms.jpg";
-  static String workinprogress = "assets/images/working1.jpg";
-  static String skyview = "assets/images/SKY.jpg";
-  static String shreesai = "assets/images/shreesai.jpg";
+  static String proflamingo = "https://ik.imagekit.io/rh19kamog/flamingo.jpg?updatedAt=1755970808940";
+  static String iot1 = "https://ik.imagekit.io/rh19kamog/iot1.jpg?updatedAt=1755970809219";
+  static String trendwave = "https://ik.imagekit.io/rh19kamog/news.jpg?updatedAt=1755970648698";
+  static String rmsystem = "https://ik.imagekit.io/rh19kamog/rms.jpg?updatedAt=1755969350457";
+  static String workinprogress = "https://ik.imagekit.io/rh19kamog/working1.jpg?updatedAt=1755970863275";
+  static String skyview = "https://ik.imagekit.io/rh19kamog/SKY.jpg?updatedAt=1755969350262";
+  static String shreesai = "https://ik.imagekit.io/rh19kamog/shreesai.jpg?updatedAt=1755969350449";
   static String logo = "assets/images/hello2.gif";
-  static String myimage1 = "assets/images/photo1.jpg";
-  static String myimage2 = "assets/images/photo2.jpg";
-  static String myimage3 = "assets/images/photo3.jpg";
-  static String myimage4 = "assets/images/photo4.jpg";
+  static String myimage1 = "https://ik.imagekit.io/rh19kamog/photo1.jpg?updatedAt=1755970265324";
+  static String myimage2 = "https://ik.imagekit.io/rh19kamog/photo2.png?updatedAt=1755970180108";
+  static String myimage3 = "https://ik.imagekit.io/rh19kamog/photo3.jpg?updatedAt=1755969350795";
+  static String myimage4 = "https://ik.imagekit.io/rh19kamog/photo4.jpg?updatedAt=1755969354941";
   static String pietlogo ="assets/images/pietlogo.png";
   static String nobleschoollogo = "assets/images/nobleschoollogo.png";
   static String celeballogo = "assets/images/celeballogo.png";

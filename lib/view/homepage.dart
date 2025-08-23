@@ -36,8 +36,8 @@ class Homepage extends StatefulWidget {
     if (ctx != null) {
       Scrollable.ensureVisible(
         ctx,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.bounceIn,
       );
     }
   }
@@ -130,6 +130,7 @@ class _HomepageState extends State<Homepage> {
     setState(() {
       _currentSection = section;
     });
+    print(section);
     switch (section) {
       case SidebarSection.home:
         Homepage.scrollToSection(Homepage.homeKey);
@@ -245,7 +246,7 @@ class _HomepageState extends State<Homepage> {
                                                     color: Colors.grey),
                                               ),
                                               SizedBox(height: 10),
-                                              Image.asset(
+                                              Image.network(
                                                 Alllink.satishimage,
                                                 height: imageHeight,
                                                 fit: BoxFit.cover,
@@ -579,7 +580,7 @@ class _HomepageState extends State<Homepage> {
                                                   color: Colors.grey),
                                             ),
                                             SizedBox(height: 10),
-                                            Image.asset(
+                                            Image.network(
                                               Alllink.satishimage,
                                               height: imageHeight,
                                               fit: BoxFit.cover,

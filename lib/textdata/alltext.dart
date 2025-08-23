@@ -3,7 +3,7 @@ class Alltext{
   static String satish = "I'm Satish Parmar.";
   static String iotandflutter= "IoT and Flutter Developer";
   static String aboutme = "About me";
-  static String aboutmedata = "I am a passionate Flutter and IoT Developer dedicated to crafting efficient mobile experiences. Professionally, I have developed a complex, multi-user maintenance application where I utilized Provider for state management and integrated Firebase for analytics and debugging. As a former GDSC Android Lead and SIH Hackathon Coordinator , I have also cultivated strong leadership and teamwork skills. With a solid command of Dart and Java, I am eager to apply my technical and problem-solving abilities to new and exciting challenges.";
+  static String aboutmedata = "I am a passionate Flutter Developer and Computer Science Engineer with a strong foundation in mobile app development, IoT, and cloud technologies. I thrive on building impactful solutions—from crafting intuitive cross-platform apps to integrating IoT devices with smart automation. My journey includes internships, hackathons, and real-world projects where I’ve honed skills in Flutter, Java, C++, Dart, Firebase, and cloud computing. Alongside technical expertise, I bring a mindset of continuous learning, problem-solving, and teamwork. With published research, patents, and leadership experiences as an Android Lead at GDSC and SIH Hackathon coordinator, I aim to blend innovation with reliability to deliver meaningful digital experiences.";
   static String skill = "Skills";
   static String flutter = "Flutter";
   static String myword = "My Work";

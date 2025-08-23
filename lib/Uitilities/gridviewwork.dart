@@ -177,7 +177,7 @@ class _WorkcardState extends State<Workcard> with SingleTickerProviderStateMixin
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
+              child: Image.network(
                 widget.image,
                 width: double.infinity,
                 fit: BoxFit.cover,

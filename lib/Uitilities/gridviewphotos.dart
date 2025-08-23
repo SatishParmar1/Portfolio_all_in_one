@@ -65,7 +65,7 @@ class _GridviewphotosState extends State<Gridviewphotos> {
                         child: Stack(
                           children: [
                             Positioned.fill(
-                              child: Image.asset(
+                              child: Image.network(
                                 image,
                                 fit: BoxFit.contain,
                                 width: double.infinity,
@@ -217,7 +217,7 @@ class _GridviewphotosState extends State<Gridviewphotos> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
+                    child: Image.network(
                       data['image']!,
                       fit: BoxFit.cover,
                       width: double.infinity,
