@@ -15,6 +15,7 @@ import '../Uitilities/ContactFormScreen.dart';
 import '../Uitilities/Contactdata.dart';
 import '../Uitilities/animated_button.dart';
 import '../Uitilities/gridviewskills.dart';
+import '../Uitilities/url_lancher.dart';
 import '../textdata/alllink.dart';
 import '../textdata/alltext.dart';
 import 'bottombar.dart';
@@ -63,6 +64,8 @@ class _HomepageState extends State<Homepage> {
   // Add throttling for scroll events
   Timer? _scrollThrottle;
 
+  bool _lockSectionUpdates = false; // prevent intermediate selection changes
+
   @override
   void initState() {
     super.initState();
@@ -99,6 +102,7 @@ class _HomepageState extends State<Homepage> {
   }
 
   void _onScroll() {
+    if (_lockSectionUpdates) return; // ignore while animating to target
     double getOffset(GlobalKey key) {
       final ctx = key.currentContext;
       if (ctx == null) return double.infinity;
@@ -133,26 +137,49 @@ class _HomepageState extends State<Homepage> {
     }
   }
 
+  // Smooth animate to a section without intermediate selection jumps
+  Future<void> _animateToSection(GlobalKey key) async {
+    final ctx = key.currentContext;
+    if (ctx == null || !Homepage.scrollController.hasClients) return;
+    final box = ctx.findRenderObject() as RenderBox?;
+    if (box == null) return;
+    final rawOffset = box.localToGlobal(Offset.zero).dy + Homepage.scrollController.offset - 60;
+    final target = rawOffset.clamp(0.0, Homepage.scrollController.position.maxScrollExtent);
+    _lockSectionUpdates = true;
+    try {
+      await Homepage.scrollController.animateTo(
+        target,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOutCubic,
+      );
+    } finally {
+      // allow scroll listener again after short settle delay
+      Future.delayed(const Duration(milliseconds: 120), () {
+        _lockSectionUpdates = false;
+        _onScroll(); // final sync
+      });
+    }
+  }
+
   void _onSectionSelected(SidebarSection section) {
     setState(() {
-      _currentSection = section;
+      _currentSection = section; // set immediately (no intermediate flashing)
     });
-    print(section);
     switch (section) {
       case SidebarSection.home:
-        Homepage.scrollToSection(Homepage.homeKey);
+        _animateToSection(Homepage.homeKey);
         break;
       case SidebarSection.about:
-        Homepage.scrollToSection(Homepage.aboutKey);
+        _animateToSection(Homepage.aboutKey);
         break;
       case SidebarSection.skills:
-        Homepage.scrollToSection(Homepage.skillsKey);
+        _animateToSection(Homepage.skillsKey);
         break;
       case SidebarSection.projects:
-        Homepage.scrollToSection(Homepage.projectsKey);
+        _animateToSection(Homepage.projectsKey);
         break;
       case SidebarSection.contact:
-        Homepage.scrollToSection(Homepage.contactKey);
+        _animateToSection(Homepage.contactKey);
         break;
     }
   }
@@ -170,7 +197,7 @@ class _HomepageState extends State<Homepage> {
 
     if (width < 600) {
       // Mobile
-      fontTitleSize = width * 0.08;
+      fontTitleSize = width * 0.09;
       fontSubtitleSize = width * 0.04;
       imageHeight = width * 0.9;
       semmenticpadding = width * 0.05;
@@ -193,7 +220,7 @@ class _HomepageState extends State<Homepage> {
       aboutme = width * 0.02;
       maxline = 2;
     }
-    return ScrollConfiguration(           // <--- added wrapper for smooth behavior
+    return ScrollConfiguration(
       behavior: const _SmoothScrollBehavior(),
       child: Scaffold(
         body: SafeArea(
@@ -490,7 +517,7 @@ class _HomepageState extends State<Homepage> {
                                                     ),
                                                     SocialmediaIcon(
                                                       icon: FontAwesomeIcons.instagram,
-                                                      url: 'https://instagram.com/satish_parmar_978',
+                                                      url: 'https://www.instagram.com/sa30_parmar/',
                                                     ),
                                                     SocialmediaIcon(
                                                       icon:FontAwesomeIcons.linkedinIn,
@@ -844,7 +871,7 @@ class _HomepageState extends State<Homepage> {
                                                 ),
                                                 SocialmediaIcon(
                                                   icon: FontAwesomeIcons.instagram,
-                                                  url: 'https://instagram.com/satish_parmar_978',
+                                                  url: 'https://www.instagram.com/sa30_parmar/',
                                                 ),
                                                 SocialmediaIcon(
                                                   icon:FontAwesomeIcons.linkedinIn,
@@ -887,7 +914,7 @@ class SocialmediaIcon extends StatelessWidget {
    final IconData icon;
    final String url;
    SocialmediaIcon({required this.icon, required this.url});
-
+   Urllancher _urllancher = new Urllancher();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -897,7 +924,7 @@ class SocialmediaIcon extends StatelessWidget {
       ),
       child: AnimatedButton(
         onTap: () {
-          // TODO: Implement launch URL
+         _urllancher.launchInBrowser(Uri.parse(url));
         },
         defaultColor: Colors.grey[500],
         hoverColor: Colors.white,
