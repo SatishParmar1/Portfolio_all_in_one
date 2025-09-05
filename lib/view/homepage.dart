@@ -77,9 +77,6 @@ class _HomepageState extends State<Homepage> {
     final remoteConfig = Firebaseremoteconfig();
     final config = await remoteConfig.fetchMarqueeConfig();
 
-    // Add this line to see exactly what you're getting from Firebase
-    print('Fetched Remote Config: $config');
-
     setState(() {
       _marqueeText = config['titlestring'] ?? '';
       _showMarquee = (config['showtitle'] == true) && _marqueeText.isNotEmpty;
