@@ -17,7 +17,7 @@ import 'firebase_options.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
-  print("Hello");
+
   // Only set orientation for mobile platforms
   if (!kIsWeb) {
     SystemChrome.setPreferredOrientations([
