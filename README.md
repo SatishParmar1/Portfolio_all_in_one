@@ -127,8 +127,8 @@ EMAIL_PASS=your-app-password
 ## 📸 Gallery
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SatishParmar1/Portfolio_all_in_one/main/assets/readme/webapp.png" width="400" alt="Web App Screenshot"/>
-  <img src="https://raw.githubusercontent.com/SatishParmar1/Portfolio_all_in_one/main/assets/readme/mobileapp.png" width="200" alt="Mobile App Screenshot"/>
+  <img src="https://ik.imagekit.io/rh19kamog/Screenshot%202025-09-06%20123819.png?updatedAt=1757143002074" width="400" alt="Web App Screenshot"/>
+  <img src="https://ik.imagekit.io/rh19kamog/Screenshot%202025-09-06%20124023.png?updatedAt=1757143001455" width="200" alt="Mobile App Screenshot"/>
 </p>
 
 ---
@@ -144,4 +144,5 @@ Project Link: [https://github.com/SatishParmar1/Portfolio_all_in_one](https://gi
 ## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
 
