@@ -1,186 +1,146 @@
-<div class="container mx-auto p-4 sm:p-8 md:p-12 bg-white shadow-xl rounded-lg my-8">
+<div align="center">
+  <img src="https://raw.githubusercontent.com/SatishParmar1/Portfolio_all_in_one/main/assets/readme/banner.png" alt="Banner Who is Satish">
+  <h1 align="center">Portfolio All-in-One</h1>
+  <strong>A fully-engineered ecosystem showcasing my skills in cross-platform development, backend services, and DevOps automation.</strong>
+</div>
 
-  <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-blue-800 mb-6 flex items-center justify-center">
-        <span class="mr-3">🚀</span> My Portfolio: Who is Satish
-    </h1>
-    <p class="text-center text-lg text-gray-600 mb-8 pb-4 border-b-2 border-gray-200">
-        Welcome to my personal portfolio project, meticulously crafted with <strong class="text-blue-600">Flutter</strong> to showcase my work, learning, and achievements across Android, iOS, and Web platforms. This application serves as a dynamic and interactive resume, providing an in-depth look at my capabilities and passion for technology.
-    </p>
+<div align="center">
+<br>
 
-   <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-yellow-500">🌟</span> About the Project
-        </h2>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            This portfolio application is designed to be a comprehensive hub for all my professional and academic endeavors. It's built to be easily accessible on various devices, ensuring a seamless experience whether viewed on a mobile phone, tablet, or web browser.
-        </p>
-        <p class="text-gray-700 leading-relaxed">
-            Within this application, you'll find dedicated sections detailing:
-        </p>
-        <ul class="list-disc list-inside text-gray-700 ml-4 mt-2 space-y-1">
-            <li><strong class="text-blue-600">Projects Done:</strong> A curated collection of my completed projects, including descriptions, technologies used, and links to live demos or repositories.</li>
-            <li><strong class="text-blue-600">Courses:</strong> A list of significant courses I've completed, highlighting key takeaways and skills acquired.</li>
-            <li><strong class="text-blue-600">Certificates:</strong> Digital certificates earned from various platforms and institutions, verifying my expertise in different domains.</li>
-            <li><strong class="text-blue-600">Skills:</strong> An overview of my technical and soft skills.</li>
-            <li><strong class="text-blue-600">About Me:</strong> A brief introduction to my background, aspirations, and interests.</li>
-        </ul>
-    </div>
-    <hr class="section-separator">
+<a href="https://who-is-satish.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/View_Live-WebApp-blue?style=for-the-badge&logo=vercel" alt="Live Demo">
+</a>
+<a href="https://github.com/SatishParmar1/Portfolio_all_in_one/blob/main/LICENSE" target="_blank">
+    <img src="https://img.shields.io/github/license/SatishParmar1/Portfolio_all_in_one?style=for-the-badge&color=orange" alt="License">
+</a>
+<a href="https://www.linkedin.com/in/satish-parmar-ak978312/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn">
+</a>
+</div>
 
+---
 
-   <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-purple-600">✨</span> Features
-        </h2>
-        <ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
-            <li><strong class="text-blue-600">Cross-Platform Compatibility:</strong> Runs flawlessly on Android, iOS, and Web from a single codebase.</li>
-            <li><strong class="text-blue-600">Responsive UI:</strong> Adapts beautifully to different screen sizes and orientations.</li>
-            <li><strong class="text-blue-600">Intuitive Navigation:</strong> Easy-to-use interface for exploring various sections of my portfolio.</li>
-            <li><strong class="text-blue-600">Interactive Elements:</strong> Engaging design to highlight projects and achievements.</li>
-            <li><strong class="text-blue-600">Modern Design:</strong> Clean, appealing, and user-friendly aesthetic.</li>
-        </ul>
-    </div>
-    <hr class="section-separator">
+## 🌟 About The Project
 
+This repository contains more than just a portfolio—it's a complete ecosystem designed to answer the question, "**Who is Satish?**". Meticulously crafted with a single **Flutter** codebase, this project runs as a responsive website, a native Android app, and a native iOS app.
 
-  <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-green-600">🛠️</span> Tech Stack
-        </h2>
-        <ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
-            <li><strong class="text-blue-600">Framework:</strong> <a href="https://flutter.dev/" class="text-blue-500 hover:underline" target="_blank">Flutter</a></li>
-            <li><strong class="text-blue-600">Language:</strong> <a href="https://dart.dev/" class="text-blue-500 hover:underline" target="_blank">Dart</a></li>
-            <li><strong class="text-blue-600">Platform Targets:</strong> Android, iOS, Web</li>
-            <li><strong class="text-blue-600">State Management:</strong> Provider</li>
-            <li><strong class="text-blue-600">Styling:</strong> Custom Widgets & Theming</li>
-        </ul>
-    </div>
-    <hr class="section-separator">
+It's backed by a robust **Node.js backend** and features a fully automated **CI/CD pipeline** that handles everything from building the apps to deploying them live. It serves as a dynamic, interactive resume and a real-world demonstration of my full-stack and DevOps capabilities.
 
+## ✨ Core Features
 
-  <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-red-500">🚀</span> Getting Started
-        </h2>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
-        </p>
+* 📱 **True Cross-Platform:** One codebase built with Flutter for Web, Android, and iOS.
+* ⚙️ **Robust Backend:** A Node.js and Express backend handles contact form submissions with Nodemailer for sending beautiful, templated emails.
+* 🚀 **Fully Automated CI/CD:** Every push to `main` triggers GitHub Actions to automatically build the web app, generate an APK, and deploy the frontend and backend to the cloud.
+* ☁️ **Cloud Native:** Frontend hosted on **Vercel** for optimal performance and the backend is live on **Render**.
+* 📊 **Analytics Ready:** **Firebase Analytics** is integrated to track user engagement and interaction.
+* 🎨 **Modern & Responsive UI:** The UI is clean, intuitive, and adapts beautifully to any screen size.
 
-<h3 class="text-2xl font-semibold text-gray-800 mb-3">Prerequisites</h3>
-<p class="text-gray-700 leading-relaxed mb-4">
-Before you begin, ensure you have the following installed:
-</p>
-<ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
-<li><strong class="text-blue-600">Flutter SDK:</strong> <a href="https://flutter.dev/docs/get-started/install" class="text-blue-500 hover:underline" target="_blank">Install Flutter</a></li>
-<li><strong class="text-blue-600">IDE:</strong> <a href="https://code.visualstudio.com/" class="text-blue-500 hover:underline" target="_blank">VS Code</a> with Flutter extension, or <a href="https://developer.android.com/studio" class="text-blue-500 hover:underline" target="_blank">Android Studio</a> with Flutter/Dart plugins.</li>
+---
+
+## 🏗️ The All-in-One Architecture
+
+This project is built on three core pillars that work in harmony:
+
+1.  **Frontend (Flutter App)**: The user-facing application built with Flutter. It's a single repository that contains all the UI, state management, and business logic for the Web, Android, and iOS targets.
+
+2.  **Backend (Node.js API)**: A simple yet powerful Node.js server responsible for handling API requests, such as the contact form. It validates data and uses Nodemailer to send transactional emails.
+
+3.  **DevOps (GitHub Actions)**: The automation engine that connects development with deployment. It listens for changes in the repository and executes a series of jobs to test, build, and deploy the frontend and backend to their respective hosting platforms.
+
+---
+
+## 🛠️ Tech Stack & Tools
+
+This project utilizes a wide range of modern technologies across the stack.
+
+| Category      | Technologies                                                                                                                                                                                                                                                        |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Frontend** | <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"> <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">                                    |
+| **Backend** | <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js"> <img src="https://img.shields.io/badge/Nodemailer-2A7D6F?style=for-the-badge&logo=maildotru&logoColor=white" alt="Nodemailer"> |
+| **DevOps** | <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions">                                                                                                                             |
+| **Hosting** | <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel"> <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Render">                                  |
+| **Analytics** | <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase">                                                                                                                                              |
+
+---
+
+## 🚀 Getting Started Locally
+
+To get a local copy up and running, follow these simple steps.
+
+<details>
+<summary><strong>Prerequisites</strong></summary>
+<br>
+<ul>
+    <li><a href="https://flutter.dev/docs/get-started/install" target="_blank"><strong>Flutter SDK</strong></a> installed.</li>
+    <li><a href="https://nodejs.org/" target="_blank"><strong>Node.js and npm</strong></a> installed.</li>
+    <li>An IDE like <a href="https://code.visualstudio.com/" target="_blank"><strong>VS Code</strong></a> or <a href="https://developer.android.com/studio" target="_blank"><strong>Android Studio</strong></a>.</li>
 </ul>
+</details>
 
-<h3 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Installation</h3>
-<ol class="list-decimal list-inside text-gray-700 ml-4 space-y-4">
-<li>
-<strong class="text-blue-600">Clone the repository:</strong>
-<pre class="bg-gray-800 text-white p-4 rounded-md mt-2 overflow-x-auto"><code>git clone https://github.com/YourUsername/your-portfolio-repo.git
-cd your-portfolio-repo</code></pre>
-</li>
-<li>
-<strong class="text-blue-600">Get dependencies:</strong>
-<pre class="bg-gray-800 text-white p-4 rounded-md mt-2 overflow-x-auto"><code>flutter pub get</code></pre>
-</li>
-<li>
-<strong class="text-blue-600">Run the application:</strong>
-<ul class="list-disc list-inside text-gray-700 ml-4 mt-2 space-y-2">
-<li>
-<strong class="text-blue-600">For Web:</strong>
-<pre class="bg-gray-800 text-white p-4 rounded-md mt-2 overflow-x-auto"><code>flutter run -d chrome # or any other web browser</code></pre>
-</li>
-<li>
-<strong class="text-blue-600">For Android:</strong>
-<p class="text-gray-700 leading-relaxed mb-2">Ensure an Android emulator is running or a device is connected.</p>
-<pre class="bg-gray-800 text-white p-4 rounded-md mt-2 overflow-x-auto"><code>flutter run</code></pre>
-</li>
-<li>
-<strong class="text-blue-600">For iOS:</strong>
-<p class="text-gray-700 leading-relaxed mb-2">Ensure an iOS simulator is running or a device is connected (macOS required).</p>
-<pre class="bg-gray-800 text-white p-4 rounded-md mt-2 overflow-x-auto"><code>flutter run</code></pre>
-</li>
-</ul>
-</li>
+<details>
+<summary><strong>Frontend Setup (Flutter App)</strong></summary>
+<br>
+<ol>
+    <li>Clone the repository:
+        <pre><code class="lang-bash">git clone https://github.com/SatishParmar1/Portfolio_all_in_one.git</code></pre>
+    </li>
+    <li>Navigate to the frontend directory:
+        <pre><code class="lang-bash">cd Portfolio_all_in_one # Or your frontend folder name</code></pre>
+    </li>
+    <li>Install dependencies:
+        <pre><code class="lang-bash">flutter pub get</code></pre>
+    </li>
+    <li>Run the app on your desired platform:
+        <pre><code class="lang-bash"># For Web
+flutter run -d chrome
+
+# For Mobile (ensure an emulator/device is connected)
+flutter run</code></pre>
+    </li>
 </ol>
-</div>
-<hr class="section-separator">
+</details>
 
-  <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-blue-500">🖥️</span> Usage
-        </h2>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            Once the application is running, you can:
-        </p>
-        <ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
-            <li>Navigate through different sections using the bottom navigation bar or side drawer.</li>
-            <li>Click on project cards to view detailed descriptions and links.</li>
-            <li>Explore courses and certificates to learn about my acquired knowledge.</li>
-        </ul>
-    </div>
-    <hr class="section-separator">
+<details>
+<summary><strong>Backend Setup (Node.js Server)</strong></summary>
+<br>
+<ol>
+    <li>Navigate to the backend directory:
+        <pre><code class="lang-bash">cd path/to/your/backend/folder</code></pre>
+    </li>
+    <li>Install npm packages:
+        <pre><code class="lang-bash">npm install</code></pre>
+    </li>
+    <li>Create a <code>.env</code> file and add your environment variables (e.g., for Nodemailer).
+        <pre><code class="lang-bash">
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+        </code></pre>
+    </li>
+    <li>Start the server:
+        <pre><code class="lang-bash">npm start</code></pre>
+    </li>
+</ol>
+</details>
 
+---
 
-  <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-orange-500">📂</span> Project Structure
-        </h2>
-        <pre class="bg-gray-800 text-white p-4 rounded-md mt-2 overflow-x-auto"><code>your_portfolio_app/
-├── lib/
-│   ├── main.dart             # Entry point of the application
-│   ├── model/                # Data models (e.g., Project, Certificate)
-│   ├── provider/             # Data fetching or utility services
-│   ├── view/                 # UI components and pages (e.g., home, projects, courses)      
-│   │   └── screens/          # Main screens/pages
-│   └── Widgets/               
-├── assets/                   # Images, fonts, other assets
-├── pubspec.yaml              # Project dependencies and metadata
-└── README.md                 # This file
-</code></pre>
-    </div>
-    <hr class="section-separator">
+## 📸 Gallery
 
-  <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-indigo-500">📸</span> Screenshots / Live Demo
-        </h2>
-        <ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
-            <li>Not Available</li>
-        </ul>
-    </div>
-    <hr class="section-separator">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SatishParmar1/Portfolio_all_in_one/main/assets/readme/webapp.png" width="400" alt="Web App Screenshot"/>
+  <img src="https://raw.githubusercontent.com/SatishParmar1/Portfolio_all_in_one/main/assets/readme/mobileapp.png" width="200" alt="Mobile App Screenshot"/>
+</p>
 
+---
 
-  <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-teal-500">📧</span> Contact
-        </h2>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            Feel free to reach out to me!
-        </p>
-        <ul class="list-disc list-inside text-gray-700 ml-4 space-y-2">
-            <li><strong class="text-blue-600">Email:</strong> satishparmarparmar486@gmail.com</li>
-            <li><strong class="text-blue-600">LinkedIn:</strong> <a href="https://www.linkedin.com/in/satish-parmar-ak978312/" class="text-blue-500 hover:underline" target="_blank">Developer LinkedIn Profile</a></li>
-            <li><strong class="text-blue-600">GitHub:</strong> <a href="https://github.com/SatishParmar1" class="text-blue-500 hover:underline" target="_blank">Developer GitHub Profile</a></li>
-        </ul>
-    </div>
-    <hr class="section-separator">
+## 📧 Contact
 
+Satish Parmar - [LinkedIn](https://www.linkedin.com/in/satish-parmar-ak978312/) - satishparmarparmar486@gmail.com
 
-  <div class="mb-10">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2 text-gray-600">📄</span> License
-        </h2>
-        <p class="text-gray-700 leading-relaxed">
-            This project is licensed under the MIT License - see the <a href="LICENSE" class="text-blue-500 hover:underline">LICENSE</a> file for details.
-        </p>
-    </div>
-    <hr class="section-separator">
+Project Link: [https://github.com/SatishParmar1/Portfolio_all_in_one](https://github.com/SatishParmar1/Portfolio_all_in_one)
 
-</div>
-#   P o r t f o l i o _ a l l _ i n _ o n e  
- 
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
