@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/SatishParmar1/Portfolio_all_in_one/main/assets/readme/banner.png" alt="Banner Who is Satish">
+  <img src="https://ik.imagekit.io/rh19kamog/hello2.gif?updatedAt=1749465342831" alt="Banner Who is Satish">
   <h1 align="center">Portfolio All-in-One</h1>
   <strong>A fully-engineered ecosystem showcasing my skills in cross-platform development, backend services, and DevOps automation.</strong>
 </div>
@@ -144,3 +144,4 @@ Project Link: [https://github.com/SatishParmar1/Portfolio_all_in_one](https://gi
 ## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
