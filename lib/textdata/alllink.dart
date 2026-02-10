@@ -28,6 +28,7 @@ class Alllink{
   static String myimage2 = "https://ik.imagekit.io/rh19kamog/photo2.png?updatedAt=1755970180108";
   static String myimage3 = "https://ik.imagekit.io/rh19kamog/photo3.jpg?updatedAt=1755969350795";
   static String myimage4 = "https://ik.imagekit.io/rh19kamog/photo4.jpg?updatedAt=1755969354941";
+  static String myimage5 = "https://ik.imagekit.io/rh19kamog/1770718640766.JPG";
   static String pietlogo ="assets/images/pietlogo.png";
   static String nobleschoollogo = "assets/images/nobleschoollogo.png";
   static String celeballogo = "assets/images/celeballogo.png";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Uitilities/url_lancher.dart';
+import 'package:portfolio/Uitilities/cached_image_widget.dart';
 import 'package:flutter/foundation.dart'; // For kIsWeb
 import 'dart:async';
 
@@ -177,8 +178,8 @@ class _WorkcardState extends State<Workcard> with SingleTickerProviderStateMixin
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                widget.image,
+              child: CachedImageWidget(
+                imageUrl: widget.image,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

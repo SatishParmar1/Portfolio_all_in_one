@@ -9,6 +9,7 @@ class Alltext{
   static String myword = "My Work";
   static String photos = "Photos";
   static String contact = "Contact";
+  static String myPackages = "My Packages";
   static String sendmessage = "Send Message";
   static String experience = "Experience";
   static String education = "Education";
@@ -16,6 +17,6 @@ class Alltext{
   static String image2about = "Showcasing our project on a significant platform, my teammate Shivam and I were awarded third prize at the Institution's Innovation Council Regional Meet 2023 held at Amity University Rajasthan, was organized under the Ministry of Education's Innovation Cell, providing a valuable opportunity to present our ideas.";
   static String image3about = "A particularly memorable highlight was the incredible opportunity to showcase our project directly to the Honorable Chief Minister of Rajasthan, Mr. Ashok Gehlot. Alongside my teammates Sachin, Prateek, and Shivam, we presented our work during a hackathon event.";
   static String image4about = " I served as the Lead Coordinator for the Smart India Hackathon 2023. It was a privilege to help organize this prestigious national event, and this moment captures my formal recognition for these efforts. I was honored to receive a certificate from our college head and a member of the SIH Nodal Center, acknowledging my contributions to the hackathon's success.";
-
+  static String image5about = " Awarded 'Outstanding Performance' at Regrip India Private Limited for technical excellence in Flutter Development, specifically for maintaining high code standards and significantly improving app responsiveness across the company's product ecosystem.";
 
 }

@@ -12,6 +12,7 @@ import 'Controllers/contactformcontroller.dart';
 import 'Controllers/education_controller.dart';
 import 'Controllers/experience_controller.dart';
 import 'Controllers/mywork_controller.dart';
+import 'Controllers/package_controller.dart';
 import 'Controllers/skill_controller.dart';
 import 'firebase_options.dart';
 
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => Experience_Controller()),
           ChangeNotifierProvider(create: (_) => Education_controller()),
           ChangeNotifierProvider(create: (_) => Contactformcontroller()),
+          ChangeNotifierProvider(create: (_) => PackageController()),
 
         ],
         child: MaterialApp.router(

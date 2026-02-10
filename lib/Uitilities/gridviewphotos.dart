@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/textdata/alllink.dart';
 import 'package:portfolio/textdata/alltext.dart';
+import 'package:portfolio/Uitilities/cached_image_widget.dart';
 
 class Gridviewphotos extends StatefulWidget {
   Gridviewphotos({super.key});
@@ -12,12 +13,8 @@ class Gridviewphotos extends StatefulWidget {
 class _GridviewphotosState extends State<Gridviewphotos> {
   final List<Map<String, String>> images = [
     {
-      'image': Alllink.myimage1,
-      'description': Alltext.image1about,
-    },
-    {
-      'image': Alllink.myimage2,
-      'description': Alltext.image2about,
+      'image': Alllink.myimage5,
+      'description': Alltext.image5about,
     },
     {
       'image': Alllink.myimage3,
@@ -27,6 +24,15 @@ class _GridviewphotosState extends State<Gridviewphotos> {
       'image': Alllink.myimage4,
       'description': Alltext.image4about,
     },
+    {
+      'image': Alllink.myimage1,
+      'description': Alltext.image1about,
+    },
+    {
+      'image': Alllink.myimage2,
+      'description': Alltext.image2about,
+    },
+
   ];
 
   int _visibleCount = 3;
@@ -65,8 +71,8 @@ class _GridviewphotosState extends State<Gridviewphotos> {
                         child: Stack(
                           children: [
                             Positioned.fill(
-                              child: Image.network(
-                                image,
+                              child: CachedImageWidget(
+                                imageUrl: image,
                                 fit: BoxFit.contain,
                                 width: double.infinity,
                               ),
@@ -217,8 +223,8 @@ class _GridviewphotosState extends State<Gridviewphotos> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.network(
-                      data['image']!,
+                    child: CachedImageWidget(
+                      imageUrl: data['image']!,
                       fit: BoxFit.cover,
                       width: double.infinity,
                       height: double.infinity,

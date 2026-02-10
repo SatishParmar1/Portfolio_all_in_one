@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/Controllers/mywork_controller.dart';
+import 'package:portfolio/Controllers/package_controller.dart';
 import 'package:portfolio/Uitilities/education.dart';
 import 'package:portfolio/Uitilities/experience.dart';
 import 'package:portfolio/Uitilities/gridviewphotos.dart';
 import 'package:portfolio/Uitilities/gridviewwork.dart';
+import 'package:portfolio/Uitilities/package_card.dart';
+import 'package:portfolio/Uitilities/cached_image_widget.dart';
 import 'package:portfolio/view/sidebar.dart';
 import 'package:provider/provider.dart';
 import 'package:marquee/marquee.dart';
@@ -280,8 +283,8 @@ class _HomepageState extends State<Homepage> {
                                                       color: Colors.grey),
                                                 ),
                                                 SizedBox(height: 10),
-                                                Image.network(
-                                                  Alllink.satishimage,
+                                                CachedImageWidget(
+                                                  imageUrl: Alllink.satishimage,
                                                   height: imageHeight,
                                                   fit: BoxFit.cover,
                                                   cacheHeight: (imageHeight * MediaQuery.of(context).devicePixelRatio).round(),
@@ -439,6 +442,47 @@ class _HomepageState extends State<Homepage> {
                                                         description: skill['description'],
                                                         link: Uri.parse(skill['link']),
                                                         maxline: maxline,
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              }),
+                                              SizedBox(height: 30),
+                                              // My Packages Section
+                                              Text(
+                                                Alltext.myPackages,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: aboutme,
+                                                    color: Colors.grey.shade600),
+                                              ),
+                                              Divider(),
+                                              SizedBox(height: 10),
+                                              Consumer<PackageController>(
+                                                  builder: (context, provider, child) {
+                                                return GridView.builder(
+                                                  shrinkWrap: true,
+                                                  physics: NeverScrollableScrollPhysics(),
+                                                  itemCount: provider.packages.length,
+                                                  gridDelegate:
+                                                      SliverGridDelegateWithMaxCrossAxisExtent(
+                                                    maxCrossAxisExtent: 400,
+                                                    crossAxisSpacing: 16,
+                                                    mainAxisSpacing: 16,
+                                                    childAspectRatio: width < 600 ? 0.7 : 0.78,
+                                                  ),
+                                                  itemBuilder: (context, index) {
+                                                    final pkg = provider.packages[index];
+                                                    return RepaintBoundary(
+                                                      child: PackageCard(
+                                                        name: pkg['name'],
+                                                        version: pkg['version'],
+                                                        description: pkg['description'],
+                                                        features: List<String>.from(pkg['features']),
+                                                        link: pkg['link'],
+                                                        github: pkg['github'],
+                                                        icon: pkg['icon'],
+                                                        platforms: List<String>.from(pkg['platforms']),
                                                       ),
                                                     );
                                                   },
@@ -616,8 +660,8 @@ class _HomepageState extends State<Homepage> {
                                                     color: Colors.grey),
                                               ),
                                               SizedBox(height: 10),
-                                              Image.network(
-                                                Alllink.satishimage,
+                                              CachedImageWidget(
+                                                imageUrl: Alllink.satishimage,
                                                 height: imageHeight,
                                                 fit: BoxFit.cover,
                                                 cacheHeight: (imageHeight * MediaQuery.of(context).devicePixelRatio).round(),
@@ -773,6 +817,48 @@ class _HomepageState extends State<Homepage> {
                                                     description: skill['description'],
                                                     link: Uri.parse(skill['link']),
                                                     maxline: maxline,
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          }),
+
+                                          SizedBox(height: 30),
+                                          // My Packages Section
+                                          Text(
+                                            Alltext.myPackages,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: aboutme,
+                                                color: Colors.grey.shade600),
+                                          ),
+                                          Divider(),
+                                          SizedBox(height: 10),
+                                          Consumer<PackageController>(
+                                              builder: (context, provider, child) {
+                                            return GridView.builder(
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              itemCount: provider.packages.length,
+                                              gridDelegate:
+                                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                                maxCrossAxisExtent: 400,
+                                                crossAxisSpacing: 16,
+                                                mainAxisSpacing: 16,
+                                                childAspectRatio: width < 600 ? 0.7 : 0.78,
+                                              ),
+                                              itemBuilder: (context, index) {
+                                                final pkg = provider.packages[index];
+                                                return RepaintBoundary(
+                                                  child: PackageCard(
+                                                    name: pkg['name'],
+                                                    version: pkg['version'],
+                                                    description: pkg['description'],
+                                                    features: List<String>.from(pkg['features']),
+                                                    link: pkg['link'],
+                                                    github: pkg['github'],
+                                                    icon: pkg['icon'],
+                                                    platforms: List<String>.from(pkg['platforms']),
                                                   ),
                                                 );
                                               },
