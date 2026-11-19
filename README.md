@@ -1,3 +1,10 @@
+## Who is Satish website
+
+- [Vercel](https://who-is-satish.vercel.app/)
+- [Portfolio on satish.studio](https://www.satish.studio/)
+
+The public portfolio uses the Next.js source in [site/](site/) and exports static HTML. Run `npm ci --prefix site` and `npm run build --prefix site` to build the website. The Flutter source and mobile projects are available below.
+
 <div align="center">
   <img src="https://ik.imagekit.io/rh19kamog/hello2.gif?updatedAt=1749465342831" alt="Banner Who is Satish">
   <h1 align="center">Portfolio All-in-One</h1>

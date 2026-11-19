@@ -1,50 +1,40 @@
-name: Build and Commit Flutter Web and APK
+name: Build Next.js portfolio
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'site/**'
+      - '.github/workflows/build_for_and_web_ios.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: portfolio-web-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     permissions:
-      contents: write # Allows the workflow to push commits to the repository
-      pages: write    # Specifically grants write access for GitHub Pages deployments
-      id-token: write # Recommended for OpenID Connect, used by GitHub Pages internally for enhanced security
-
+      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          flutter-version: '3.32.5' # This is good, should fix Dart SDK issue
-          channel: 'stable' # Explicitly stating channel is good practice
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build Web
-        run: flutter build web
-
-      - name: Prepare Web Build Folder
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci --prefix site
+      - run: npm run build --prefix site
+      - name: Update the static web export
         run: |
-          rm -rf web_build
-          mkdir web_build
-          cp -r build/web/* web_build/
-
-      - name: Commit Built Artifacts
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web_build 
-          git commit -m "chore: update built web" || echo "No changes to commit"
-
-      - name: Push Changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          rsync -a --delete --exclude '/vercel.json' site/out/ web_build/
+          git add -- web_build
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update the static portfolio export'
+          git push origin HEAD:main
